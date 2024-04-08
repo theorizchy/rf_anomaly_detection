@@ -1,0 +1,51 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "CMake: Clean",
+			"command": "rm",
+			"args": [
+				"-rf",
+				"model_deployment/build/*"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "Clean the build directory"
+		},
+		{
+			"type": "shell",
+			"label": "CMake: Pre-build",
+			"command": "cmake",
+			"args": [
+				".."
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/model_deployment/build"
+			},
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "CMake template build task"
+		},
+		{
+			"type": "shell",
+			"label": "CMake: Build",
+			"command": "cmake",
+			"args": [
+				"--build",
+				".",
+                "-j"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/model_deployment/build"
+			},
+			"dependsOrder": "sequence",
+			"dependsOn":[
+				"CMake: Pre-build"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"detail": "Clean and rebuild the project"
+		}
+	]
+}

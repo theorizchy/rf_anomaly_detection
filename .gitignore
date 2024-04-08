@@ -2,3 +2,4 @@ venv/*
 input_file/*
 output_file/*
 model_deployment/build/*
+train_data/*
