@@ -17,17 +17,20 @@ def sendEmail():
 	msgRoot['From'] = fromEmail
 	msgRoot['To'] = toEmail
 	msgRoot.preamble = 'Hidden Camera may be activated'
-
     # Create the email body text with the time in bold
 	current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-	body_text = f"RF Anomaly detector find a potential breach at <b>{current_time}</b>.\n\
-                  Hidden camera might be activated on your premises.<br><br>\
-                  Please disregard this message if you acknowledge such activities.<br><br>\
-                  Sincerly,<br><br>\
-                  Smart RF Detector"
+	body_text = f"""RF Anomaly detector find a potential breach at <b>{current_time}</b>.
+ 				<br>
+				<span style='color: #000000; font-weight: normal;'>Hidden camera might be activated on your premises.<br>
+				<br>
+				Please disregard this message if you acknowledge such activities.<br>
+    			<br>
+				Sincerely,
+    			<br>
+       			<br>
+				<i>Smart RF Detector</i>"""
 	msgText = MIMEText(body_text, 'html')
 	msgRoot.attach(msgText)
-
 	smtp = smtplib.SMTP('smtp.gmail.com', 587)
 	smtp.starttls()
 	smtp.login(fromEmail, fromEmailPassword)
