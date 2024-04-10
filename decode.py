@@ -120,21 +120,23 @@ def save_parsed_shr_file(sweep_data_dict={}, output_file='sweep_data'):
     csv_file_name = 'parsed_' + output_file + '.csv'
     csv_file_path = os.path.join('output_file', csv_file_name)
     with open(csv_file_path, "w", newline='') as csvfile:
-        # Get the maximum length of the lists in the dictionary
-        max_length = max(len(v) for v in sweep_data_dict.values())
         # Create a CSV writer object associated with the file
         writer = csv.writer(csvfile)
-        # Write timestamp column-wise
-        writer.writerow(sweep_data_dict.keys())  # Write column headers
-        for i in range(max_length):
-            row = [sweep_data_dict[col][i] if i < len(sweep_data_dict[col]) else '' for col in sweep_data_dict.keys()]
-            writer.writerow(row)
+        # Write data row by row
+        for (timestamp, v) in sweep_data_dict.items():
+            # Format timestamp to limit decimal places to 3
+            # Format data to limit decimal places to 3
+            data = ["{:.3f}".format(value) for value in v.tolist()]
+            row_data = [timestamp] + data
+            # Write the row to the CSV file
+            writer.writerow(row_data)
+
 
 if __name__ == "__main__":
-    # filename = "SWEEP_REC_2024-03-12 21h36m56s.shr"
+    filename = "SWEEP_REC_2024-03-12 21h36m56s_cam_on.shr"
     # filename = "SWEEP_REC_2024-03-12 21h02m38s_cam_on.shr"
     # filename = "SWEEP_REC_2024-03-12 20h42m01s_cam_off.shr"
-    filename = "SWEEP_REC_2024-03-12 20h27m34s_cam_on.shr"
+    # filename = "SWEEP_REC_2024-03-12 20h27m34s_cam_on.shr"
     file_path = os.path.join('input_file', filename)
     parsed_dict = parse_shr_file(file_path)
     save_parsed_shr_file(parsed_dict, filename[:-4])

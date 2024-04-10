@@ -43,8 +43,6 @@ filename = f"captured_SWEEP_REC_{datetime.now().astimezone(tz=None).strftime('%Y
 filepath = os.path.join('output_file', filename)
 with open(filepath, 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerow(['Timestamp', 'Capture Points'])
-
     # Perform 100 sweeps
     for i in range(100):
         # Get current timestamp with millisecond
