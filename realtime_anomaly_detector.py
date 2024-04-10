@@ -81,7 +81,7 @@ def get_current_timestamp():
     return datetime.now().astimezone(tz=None).strftime('%Y-%m-%d %H:%M:%S.%f')
 
 # Create a CSV file with timestamp in filename
-filename = f"captured_SWEEP_REC_{datetime.now().astimezone(tz=None).strftime('%Y-%m-%d %Hh%Mm%Ss')}.csv"
+filename = f"real_time_SWEEP_REC_{datetime.now().astimezone(tz=None).strftime('%Y-%m-%d %Hh%Mm%Ss')}.csv"
 filepath = os.path.join('output_file', filename)
 
 with open(filepath, 'w', newline='') as csvfile:

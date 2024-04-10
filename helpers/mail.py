@@ -21,9 +21,9 @@ def sendEmail():
     # Create the email body text with the time in bold
 	current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 	body_text = f"RF Anomaly detector find a potential breach at <b>{current_time}</b>.\n\
-                  Hidden camera might be activated on your premises.\n\n\
-                  Please disregard this message if you acknowledge such activities.\n\n\
-                  Sincerly,\n\
+                  Hidden camera might be activated on your premises.<br><br>\
+                  Please disregard this message if you acknowledge such activities.<br><br>\
+                  Sincerly,<br><br>\
                   Smart RF Detector"
 	msgText = MIMEText(body_text, 'html')
 	msgRoot.attach(msgText)
