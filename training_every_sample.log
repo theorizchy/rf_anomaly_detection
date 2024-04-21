@@ -1,0 +1,1140 @@
+theor@Theo MINGW64 ~/OneDrive/Desktop/Master/Project/rf_anomaly_detection (main)
+$ python advance_model.py
+Reloading Tuner from keras_tuning\cnn_rnn_tuner\tuner0.json
+
+Search: Running Trial #4
+
+Value             |Best Value So Far |Hyperparameter
+64                |32                |conv_filters
+5                 |4                 |conv_kernel
+0                 |0.3               |dropout_cnn
+96                |96                |lstm_units
+0.3               |0.4               |dropout_rnn
+
+2024-04-14 23:53:56.626342: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-04-14 23:53:57.114568: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 5449 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4060 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9
+Epoch 1/10
+2024-04-14 23:53:58.510578: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8700
+2024-04-14 23:53:59.630142: I tensorflow/stream_executor/cuda/cuda_blas.cc:1614] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+103/103 [==============================] - 201s 2s/step - loss: 0.6986 - accuracy: 0.5347 - val_loss: 0.6583 - val_accuracy: 0.5895
+Epoch 2/10
+103/103 [==============================] - 210s 2s/step - loss: 0.6850 - accuracy: 0.5590 - val_loss: 0.6561 - val_accuracy: 0.7657
+Epoch 3/10
+103/103 [==============================] - 212s 2s/step - loss: 0.6445 - accuracy: 0.6264 - val_loss: 0.5644 - val_accuracy: 0.8459
+Epoch 4/10
+103/103 [==============================] - 210s 2s/step - loss: 0.6639 - accuracy: 0.6213 - val_loss: 0.6873 - val_accuracy: 0.4878
+Epoch 5/10
+103/103 [==============================] - 210s 2s/step - loss: 0.6896 - accuracy: 0.5369 - val_loss: 0.6842 - val_accuracy: 0.5116
+Epoch 6/10
+103/103 [==============================] - 209s 2s/step - loss: 0.6847 - accuracy: 0.5534 - val_loss: 0.6722 - val_accuracy: 0.4878
+Epoch 7/10
+103/103 [==============================] - 211s 2s/step - loss: 0.6646 - accuracy: 0.5999 - val_loss: 0.6596 - val_accuracy: 0.4881
+Epoch 8/10
+103/103 [==============================] - 210s 2s/step - loss: 0.6471 - accuracy: 0.6179 - val_loss: 0.6545 - val_accuracy: 0.6024
+Epoch 9/10
+103/103 [==============================] - 210s 2s/step - loss: 0.6344 - accuracy: 0.6536 - val_loss: 0.7649 - val_accuracy: 0.5122
+Epoch 10/10
+103/103 [==============================] - 211s 2s/step - loss: 0.7054 - accuracy: 0.5043 - val_loss: 0.6887 - val_accuracy: 0.5483
+Epoch 1/10
+103/103 [==============================] - 212s 2s/step - loss: 0.7073 - accuracy: 0.5165 - val_loss: 0.6765 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 208s 2s/step - loss: 0.7029 - accuracy: 0.5238 - val_loss: 0.6810 - val_accuracy: 0.5704
+Epoch 3/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6943 - accuracy: 0.5334 - val_loss: 0.6659 - val_accuracy: 0.7470
+Epoch 4/10
+103/103 [==============================] - 209s 2s/step - loss: 0.6881 - accuracy: 0.5544 - val_loss: 0.6779 - val_accuracy: 0.4881
+Epoch 5/10
+103/103 [==============================] - 220s 2s/step - loss: 0.6879 - accuracy: 0.5534 - val_loss: 0.6792 - val_accuracy: 0.5237
+Epoch 6/10
+103/103 [==============================] - 210s 2s/step - loss: 0.6853 - accuracy: 0.5584 - val_loss: 0.6651 - val_accuracy: 0.5301
+Epoch 7/10
+103/103 [==============================] - 210s 2s/step - loss: 0.6849 - accuracy: 0.5594 - val_loss: 0.6952 - val_accuracy: 0.5119
+Epoch 8/10
+103/103 [==============================] - 210s 2s/step - loss: 0.6860 - accuracy: 0.6208 - val_loss: 0.6783 - val_accuracy: 0.5673
+Epoch 9/10
+103/103 [==============================] - 210s 2s/step - loss: 0.7171 - accuracy: 0.5468 - val_loss: 0.6531 - val_accuracy: 0.5122
+Epoch 10/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6610 - accuracy: 0.6099 - val_loss: 0.5690 - val_accuracy: 0.7595
+Trial 4 Complete [01h 10m 01s]
+val_accuracy: 0.8027350902557373
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 1d 11h 47m 56s
+
+Search: Running Trial #5
+
+Value             |Best Value So Far |Hyperparameter
+64                |64                |conv_filters
+5                 |5                 |conv_kernel
+0.4               |0                 |dropout_cnn
+32                |96                |lstm_units
+0                 |0.3               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 195s 2s/step - loss: 0.7032 - accuracy: 0.4992 - val_loss: 0.6918 - val_accuracy: 0.5122
+Epoch 2/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6961 - accuracy: 0.5019 - val_loss: 0.6938 - val_accuracy: 0.5122
+Epoch 3/10
+103/103 [==============================] - 196s 2s/step - loss: 0.6953 - accuracy: 0.5057 - val_loss: 0.6929 - val_accuracy: 0.5122
+Epoch 4/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6943 - accuracy: 0.5013 - val_loss: 0.6928 - val_accuracy: 0.5122
+Epoch 5/10
+103/103 [==============================] - 196s 2s/step - loss: 0.6938 - accuracy: 0.5012 - val_loss: 0.6929 - val_accuracy: 0.5121
+Epoch 6/10
+103/103 [==============================] - 196s 2s/step - loss: 0.6933 - accuracy: 0.5058 - val_loss: 0.6928 - val_accuracy: 0.5121
+Epoch 7/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6938 - accuracy: 0.4954 - val_loss: 0.6930 - val_accuracy: 0.5121
+Epoch 8/10
+103/103 [==============================] - 196s 2s/step - loss: 0.6934 - accuracy: 0.5057 - val_loss: 0.6930 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6934 - accuracy: 0.5013 - val_loss: 0.6929 - val_accuracy: 0.5121
+Epoch 10/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6932 - accuracy: 0.5069 - val_loss: 0.6926 - val_accuracy: 0.5113
+Epoch 1/10
+103/103 [==============================] - 196s 2s/step - loss: 0.7007 - accuracy: 0.5175 - val_loss: 0.6963 - val_accuracy: 0.5122
+Epoch 2/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6952 - accuracy: 0.4991 - val_loss: 0.6933 - val_accuracy: 0.4878
+Epoch 3/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6945 - accuracy: 0.4870 - val_loss: 0.6932 - val_accuracy: 0.5122
+Epoch 4/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6935 - accuracy: 0.4907 - val_loss: 0.6932 - val_accuracy: 0.4878
+Epoch 5/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6936 - accuracy: 0.4911 - val_loss: 0.6931 - val_accuracy: 0.5121
+Epoch 6/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6935 - accuracy: 0.4914 - val_loss: 0.6931 - val_accuracy: 0.5120
+Epoch 7/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6933 - accuracy: 0.4984 - val_loss: 0.6930 - val_accuracy: 0.5122
+Epoch 8/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6933 - accuracy: 0.4978 - val_loss: 0.6930 - val_accuracy: 0.5122
+Epoch 9/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6933 - accuracy: 0.4966 - val_loss: 0.6930 - val_accuracy: 0.5122
+Epoch 10/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6933 - accuracy: 0.4945 - val_loss: 0.6929 - val_accuracy: 0.5122
+Trial 5 Complete [01h 04m 59s]
+val_accuracy: 0.5121951103210449
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 1d 12h 52m 55s
+
+Search: Running Trial #6
+
+Value             |Best Value So Far |Hyperparameter
+128               |64                |conv_filters
+5                 |5                 |conv_kernel
+0.1               |0                 |dropout_cnn
+128               |96                |lstm_units
+0.2               |0.3               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 214s 2s/step - loss: 0.7127 - accuracy: 0.5083 - val_loss: 0.6905 - val_accuracy: 0.5120
+Epoch 2/10
+2024-04-15 02:12:40.237643: W tensorflow/core/common_runtime/bfc_allocator.cc:479] Allocator (GPU_0_bfc) ran out of memory trying to allocate 608.51MiB (rounded to 638066688)requested by op gradients/CudnnRNN_grad/CudnnRNNBackprop
+If the cause is memory fragmentation maybe the environment variable 'TF_GPU_ALLOCATOR=cuda_malloc_async' will improve the situation.
+Current allocation summary follows.
+Current allocation summary follows.
+2024-04-15 02:12:40.238352: I tensorflow/core/common_runtime/bfc_allocator.cc:1033] BFCAllocator dump for GPU_0_bfc
+2024-04-15 02:12:40.238421: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (256):  Total Chunks: 67, Chunks in use: 65. 16.8KiB allocated for chunks. 16.2KiB in use in bin. 304B client-requested in use in bin.
+2024-04-15 02:12:40.238507: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (512):  Total Chunks: 7, Chunks in use: 6. 3.5KiB allocated for chunks. 3.0KiB in use in bin. 3.0KiB client-requested in use in bin.
+2024-04-15 02:12:40.238582: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (1024):         Total Chunks: 2, Chunks in use: 2. 3.0KiB allocated for chunks. 3.0KiB in use in bin. 2.6KiB client-requested in use in bin.
+2024-04-15 02:12:40.238667: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (2048):         Total Chunks: 9, Chunks in use: 8. 21.8KiB allocated for chunks. 19.5KiB in use in bin. 17.5KiB client-requested in use in bin.
+2024-04-15 02:12:40.238743: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (4096):         Total Chunks: 1, Chunks in use: 1. 6.5KiB allocated for chunks. 6.5KiB in use in bin. 6.4KiB client-requested in use in bin.
+2024-04-15 02:12:40.238816: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (8192):         Total Chunks: 8, Chunks in use: 8. 64.0KiB allocated for chunks. 64.0KiB in use in bin. 64.0KiB client-requested in use in bin.
+2024-04-15 02:12:40.238905: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (16384):        Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.239067: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (32768):        Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.239160: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (65536):        Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.239236: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (131072):       Total Chunks: 1, Chunks in use: 0. 158.0KiB allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.239310: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (262144):       Total Chunks: 7, Chunks in use: 6. 1.88MiB allocated for chunks. 1.50MiB in use in bin. 1.50MiB client-requested in use in bin.
+2024-04-15 02:12:40.239420: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (524288):       Total Chunks: 2, Chunks in use: 2. 1.01MiB allocated for chunks. 1.01MiB in use in bin. 1.01MiB client-requested in use in bin.
+2024-04-15 02:12:40.239493: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (1048576):      Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.239567: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (2097152):      Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.239755: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (4194304):      Total Chunks: 1, Chunks in use: 1. 4.69MiB allocated for chunks. 4.69MiB in use in bin. 4.69MiB client-requested in use in bin.
+2024-04-15 02:12:40.239904: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (8388608):      Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.239992: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (16777216):     Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.240107: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (33554432):     Total Chunks: 0, Chunks in use: 0. 0B allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.240244: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (67108864):     Total Chunks: 1, Chunks in use: 1. 120.12MiB allocated for chunks. 120.12MiB in use in bin. 120.12MiB client-requested in use in bin.
+2024-04-15 02:12:40.240344: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (134217728):    Total Chunks: 1, Chunks in use: 0. 138.08MiB allocated for chunks. 0B in use in bin. 0B client-requested in use in bin.
+2024-04-15 02:12:40.240454: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Bin (268435456):    Total Chunks: 11, Chunks in use: 10. 5.06GiB allocated for chunks. 4.62GiB in use in bin. 4.57GiB client-requested in use in bin.
+2024-04-15 02:12:40.240537: I tensorflow/core/common_runtime/bfc_allocator.cc:1056] Bin for 608.51MiB was 256.00MiB, Chunk State:
+2024-04-15 02:12:40.240596: I tensorflow/core/common_runtime/bfc_allocator.cc:1062]   Size: 454.18MiB | Requested Size: 299.99MiB | in_use: 0 | bin_num: 20, prev:   Size: 1.46GiB | Requested Size: 1.46GiB | in_use: 1 | bin_num: -1
+2024-04-15 02:12:40.240682: I tensorflow/core/common_runtime/bfc_allocator.cc:1069] Next region of size 5713690624
+2024-04-15 02:12:40.240731: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800000 of size 256 next 1
+2024-04-15 02:12:40.240810: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800100 of size 1280 next 2
+2024-04-15 02:12:40.240861: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800600 of size 256 next 3
+2024-04-15 02:12:40.240902: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800700 of size 256 next 4
+2024-04-15 02:12:40.240937: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800800 of size 256 next 6
+2024-04-15 02:12:40.240975: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800900 of size 256 next 7
+2024-04-15 02:12:40.241018: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800a00 of size 256 next 5
+2024-04-15 02:12:40.241060: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800b00 of size 256 next 8
+2024-04-15 02:12:40.241126: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800c00 of size 256 next 13
+2024-04-15 02:12:40.241190: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800d00 of size 256 next 11
+2024-04-15 02:12:40.241246: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800e00 of size 256 next 18
+2024-04-15 02:12:40.241308: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c800f00 of size 256 next 16
+2024-04-15 02:12:40.241377: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801000 of size 256 next 17
+2024-04-15 02:12:40.241432: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801100 of size 256 next 22
+2024-04-15 02:12:40.241498: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801200 of size 256 next 27
+2024-04-15 02:12:40.241562: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801300 of size 256 next 28
+2024-04-15 02:12:40.241623: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801400 of size 256 next 70
+2024-04-15 02:12:40.241674: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801500 of size 256 next 125
+2024-04-15 02:12:40.241717: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801600 of size 256 next 72
+2024-04-15 02:12:40.241763: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801700 of size 256 next 60
+2024-04-15 02:12:40.241810: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801800 of size 256 next 127
+2024-04-15 02:12:40.241868: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801900 of size 512 next 86
+2024-04-15 02:12:40.241922: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801b00 of size 256 next 37
+2024-04-15 02:12:40.241962: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801c00 of size 256 next 84
+2024-04-15 02:12:40.242008: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801d00 of size 256 next 101
+2024-04-15 02:12:40.242063: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801e00 of size 256 next 123
+2024-04-15 02:12:40.242107: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c801f00 of size 256 next 102
+2024-04-15 02:12:40.242155: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c802000 of size 256 next 15
+2024-04-15 02:12:40.242212: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c802100 of size 256 next 78
+2024-04-15 02:12:40.242253: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c802200 of size 256 next 47
+2024-04-15 02:12:40.242298: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c802300 of size 512 next 118
+2024-04-15 02:12:40.242349: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c802500 of size 2816 next 80
+2024-04-15 02:12:40.242414: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c803000 of size 3840 next 26
+2024-04-15 02:12:40.242456: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c803f00 of size 256 next 29
+2024-04-15 02:12:40.242502: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c804000 of size 256 next 30
+2024-04-15 02:12:40.242550: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c804100 of size 256 next 31
+2024-04-15 02:12:40.242596: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c804200 of size 256 next 32
+2024-04-15 02:12:40.242652: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c804300 of size 256 next 33
+2024-04-15 02:12:40.242726: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c804400 of size 262144 next 69
+2024-04-15 02:12:40.242824: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c844400 of size 262144 next 45
+2024-04-15 02:12:40.242902: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c884400 of size 262144 next 137
+2024-04-15 02:12:40.242971: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c4400 of size 6656 next 94
+2024-04-15 02:12:40.243041: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c5e00 of size 2560 next 77
+2024-04-15 02:12:40.243177: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c6800 of size 512 next 89
+2024-04-15 02:12:40.243276: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c6a00 of size 2048 next 76
+2024-04-15 02:12:40.243371: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c7200 of size 512 next 25
+2024-04-15 02:12:40.243561: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c7400 of size 256 next 138
+2024-04-15 02:12:40.243622: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c7500 of size 2560 next 83
+2024-04-15 02:12:40.243671: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c7f00 of size 512 next 106
+2024-04-15 02:12:40.243719: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c8100 of size 2048 next 104
+2024-04-15 02:12:40.243766: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c8900 of size 512 next 88
+2024-04-15 02:12:40.243813: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c8b00 of size 256 next 14
+2024-04-15 02:12:40.243859: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c8c00 of size 256 next 97
+2024-04-15 02:12:40.243910: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c8d00 of size 256 next 52
+2024-04-15 02:12:40.244021: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c8e00 of size 256 next 49
+2024-04-15 02:12:40.244097: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c8f00 of size 256 next 81
+2024-04-15 02:12:40.244177: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9000 of size 256 next 73
+2024-04-15 02:12:40.244242: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9100 of size 256 next 50
+2024-04-15 02:12:40.244306: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9200 of size 256 next 53
+2024-04-15 02:12:40.244358: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9300 of size 256 next 51
+2024-04-15 02:12:40.244431: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9400 of size 256 next 57
+2024-04-15 02:12:40.244522: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9500 of size 256 next 35
+2024-04-15 02:12:40.244590: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9600 of size 256 next 96
+2024-04-15 02:12:40.244652: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9700 of size 256 next 58
+2024-04-15 02:12:40.244710: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9800 of size 256 next 59
+2024-04-15 02:12:40.244790: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9900 of size 256 next 87
+2024-04-15 02:12:40.244885: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9a00 of size 256 next 98
+2024-04-15 02:12:40.244960: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9b00 of size 256 next 41
+2024-04-15 02:12:40.245026: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9c00 of size 256 next 10
+2024-04-15 02:12:40.245076: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9d00 of size 256 next 85
+2024-04-15 02:12:40.245133: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9e00 of size 256 next 74
+2024-04-15 02:12:40.245221: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8c9f00 of size 256 next 55
+2024-04-15 02:12:40.245280: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8ca000 of size 256 next 122
+2024-04-15 02:12:40.245346: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8ca100 of size 256 next 107
+2024-04-15 02:12:40.245416: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8ca200 of size 1792 next 40
+2024-04-15 02:12:40.245505: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8ca900 of size 256 next 46
+2024-04-15 02:12:40.245563: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8caa00 of size 256 next 129
+2024-04-15 02:12:40.245636: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] Free  at b0c8cab00 of size 256 next 114
+2024-04-15 02:12:40.245696: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8cac00 of size 256 next 75
+2024-04-15 02:12:40.245748: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] Free  at b0c8cad00 of size 512 next 12
+2024-04-15 02:12:40.245805: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8caf00 of size 256 next 79
+2024-04-15 02:12:40.245877: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8cb000 of size 2048 next 100
+2024-04-15 02:12:40.245952: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8cb800 of size 256 next 120
+2024-04-15 02:12:40.246030: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] Free  at b0c8cb900 of size 256 next 42
+2024-04-15 02:12:40.246088: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8cba00 of size 256 next 121
+2024-04-15 02:12:40.246168: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] Free  at b0c8cbb00 of size 2304 next 54
+2024-04-15 02:12:40.246231: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8cc400 of size 2048 next 23
+2024-04-15 02:12:40.246299: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8ccc00 of size 8192 next 103
+2024-04-15 02:12:40.246347: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8cec00 of size 8192 next 110
+2024-04-15 02:12:40.246422: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8d0c00 of size 8192 next 139
+2024-04-15 02:12:40.246483: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8d2c00 of size 8192 next 90
+2024-04-15 02:12:40.246542: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8d4c00 of size 8192 next 105
+2024-04-15 02:12:40.246609: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8d6c00 of size 8192 next 99
+2024-04-15 02:12:40.246658: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8d8c00 of size 8192 next 44
+2024-04-15 02:12:40.246709: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c8dac00 of size 8192 next 61
+2024-04-15 02:12:40.246753: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] Free  at b0c8dcc00 of size 161792 next 124
+2024-04-15 02:12:40.246804: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c904400 of size 262144 next 9
+2024-04-15 02:12:40.246851: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b0c944400 of size 502899712 next 34
+2024-04-15 02:12:40.246898: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b2a8de800 of size 262144 next 108
+2024-04-15 02:12:40.246941: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b2a91e800 of size 262144 next 65
+2024-04-15 02:12:40.246985: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b2a95e800 of size 125955328 next 68
+2024-04-15 02:12:40.247027: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b3217d500 of size 4915456 next 128
+2024-04-15 02:12:40.247068: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b3262d600 of size 314564608 next 116
+2024-04-15 02:12:40.247109: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] Free  at b4522b600 of size 395264 next 145
+2024-04-15 02:12:40.247149: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b4528be00 of size 528384 next 63
+2024-04-15 02:12:40.247209: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b4530ce00 of size 528384 next 92
+2024-04-15 02:12:40.247329: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] Free  at b4538de00 of size 144793088 next 132
+2024-04-15 02:12:40.247387: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b4dda3c00 of size 256 next 48
+2024-04-15 02:12:40.247452: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b4dda3d00 of size 629129216 next 111
+2024-04-15 02:12:40.247525: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b7359fd00 of size 314564608 next 21
+2024-04-15 02:12:40.247599: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b8619dd00 of size 357297664 next 20
+2024-04-15 02:12:40.247686: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b9b65cb00 of size 256 next 140
+2024-04-15 02:12:40.247768: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at b9b65cc00 of size 314564608 next 131
+2024-04-15 02:12:40.247832: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at bae25ac00 of size 314564608 next 66
+2024-04-15 02:12:40.247909: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at bc0e58c00 of size 314564608 next 142
+2024-04-15 02:12:40.247994: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at bd3a56c00 of size 323502080 next 109
+2024-04-15 02:12:40.248062: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] InUse at be6edac00 of size 1572823296 next 112
+2024-04-15 02:12:40.248152: I tensorflow/core/common_runtime/bfc_allocator.cc:1089] Free  at c44ad0d00 of size 476246784 next 18446744073709551615
+2024-04-15 02:12:40.248224: I tensorflow/core/common_runtime/bfc_allocator.cc:1094]      Summary of in-use Chunks by size:
+2024-04-15 02:12:40.248297: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 65 Chunks of size 256 totalling 16.2KiB
+2024-04-15 02:12:40.248369: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 6 Chunks of size 512 totalling 3.0KiB
+2024-04-15 02:12:40.248457: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 1280 totalling 1.2KiB
+2024-04-15 02:12:40.248514: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 1792 totalling 1.8KiB
+2024-04-15 02:12:40.248598: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 4 Chunks of size 2048 totalling 8.0KiB
+2024-04-15 02:12:40.248669: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 2 Chunks of size 2560 totalling 5.0KiB
+2024-04-15 02:12:40.248728: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 2816 totalling 2.8KiB
+2024-04-15 02:12:40.248798: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 3840 totalling 3.8KiB
+2024-04-15 02:12:40.248877: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 6656 totalling 6.5KiB
+2024-04-15 02:12:40.248941: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 8 Chunks of size 8192 totalling 64.0KiB
+2024-04-15 02:12:40.249006: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 6 Chunks of size 262144 totalling 1.50MiB
+2024-04-15 02:12:40.249077: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 2 Chunks of size 528384 totalling 1.01MiB
+2024-04-15 02:12:40.249140: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 4915456 totalling 4.69MiB
+2024-04-15 02:12:40.249204: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 125955328 totalling 120.12MiB
+2024-04-15 02:12:40.249253: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 5 Chunks of size 314564608 totalling 1.46GiB
+2024-04-15 02:12:40.249338: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 323502080 totalling 308.52MiB
+2024-04-15 02:12:40.249393: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 357297664 totalling 340.75MiB
+2024-04-15 02:12:40.249448: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 502899712 totalling 479.60MiB
+2024-04-15 02:12:40.249517: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 629129216 totalling 599.98MiB
+2024-04-15 02:12:40.249575: I tensorflow/core/common_runtime/bfc_allocator.cc:1097] 1 Chunks of size 1572823296 totalling 1.46GiB
+2024-04-15 02:12:40.249648: I tensorflow/core/common_runtime/bfc_allocator.cc:1101] Sum Total of in-use chunks: 4.74GiB
+2024-04-15 02:12:40.249717: I tensorflow/core/common_runtime/bfc_allocator.cc:1103] total_region_allocated_bytes_: 5713690624 memory_limit_: 5713690624 available bytes: 0 curr_region_allocation_bytes_: 11427381248
+2024-04-15 02:12:40.249833: I tensorflow/core/common_runtime/bfc_allocator.cc:1109] Stats:
+Limit:                      5713690624
+InUse:                      5092090368
+MaxInUse:                   5561504768
+NumAllocs:                      588197
+MaxAllocSize:               1572823296
+Reserved:                            0
+PeakReserved:                        0
+LargestFreeBlock:                    0
+
+2024-04-15 02:12:40.250115: W tensorflow/core/common_runtime/bfc_allocator.cc:491] *****************__*************************************************************************________
+2024-04-15 02:12:40.250198: E tensorflow/stream_executor/dnn.cc:868] OOM when allocating tensor with shape[638066688] and type uint8 on /job:localhost/replica:0/task:0/device:GPU:0 by allocator GPU_0_bfc
+2024-04-15 02:12:40.250349: W tensorflow/core/framework/op_kernel.cc:1780] OP_REQUIRES failed at cudnn_rnn_ops.cc:1970 : INTERNAL: Failed to call ThenRnnBackward with model config: [rnn_mode, rnn_input_mode, rnn_direction_mode]: 2, 0, 0 , [num_layers, input_size, num_units, dir_count, max_seq_length, batch_size, cell_num_units]: [1, 128, 128, 1, 38399, 16, 128]
+Traceback (most recent call last):
+  File "C:\Users\theor\OneDrive\Desktop\Master\Project\rf_anomaly_detection\venv\lib\site-packages\keras_tuner\src\engine\base_tuner.py", line 274, in _try_run_and_update_trial
+    self._run_and_update_trial(trial, *fit_args, **fit_kwargs)
+  File "C:\Users\theor\OneDrive\Desktop\Master\Project\rf_anomaly_detection\venv\lib\site-packages\keras_tuner\src\engine\base_tuner.py", line 239, in _run_and_update_trial
+    results = self.run_trial(trial, *fit_args, **fit_kwargs)
+  File "C:\Users\theor\OneDrive\Desktop\Master\Project\rf_anomaly_detection\venv\lib\site-packages\keras_tuner\src\engine\tuner.py", line 314, in run_trial
+    obj_value = self._build_and_fit_model(trial, *args, **copied_kwargs)
+  File "C:\Users\theor\OneDrive\Desktop\Master\Project\rf_anomaly_detection\venv\lib\site-packages\keras_tuner\src\engine\tuner.py", line 233, in _build_and_fit_model
+    results = self.hypermodel.fit(hp, model, *args, **kwargs)
+  File "C:\Users\theor\OneDrive\Desktop\Master\Project\rf_anomaly_detection\venv\lib\site-packages\keras_tuner\src\engine\hypermodel.py", line 149, in fit
+    return model.fit(*args, **kwargs)
+  File "C:\Users\theor\OneDrive\Desktop\Master\Project\rf_anomaly_detection\venv\lib\site-packages\keras\utils\traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "C:\Users\theor\OneDrive\Desktop\Master\Project\rf_anomaly_detection\venv\lib\site-packages\tensorflow\python\eager\execute.py", line 54, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.InternalError: Graph execution error:
+
+Failed to call ThenRnnBackward with model config: [rnn_mode, rnn_input_mode, rnn_direction_mode]: 2, 0, 0 , [num_layers, input_size, num_units, dir_count, max_seq_length, batch_size, cell_num_units]: [1, 128, 128, 1, 38399, 16, 128]
+         [[{{node gradients/CudnnRNN_grad/CudnnRNNBackprop}}]]
+         [[Adam/gradients/PartitionedCall]] [Op:__inference_train_function_41063]
+Trial 6 Complete [00h 03m 46s]
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 1d 12h 56m 41s
+
+Search: Running Trial #7
+
+Value             |Best Value So Far |Hyperparameter
+96                |64                |conv_filters
+3                 |5                 |conv_kernel
+0.2               |0                 |dropout_cnn
+32                |96                |lstm_units
+0.1               |0.3               |dropout_rnn
+
+2024-04-15 02:12:40.408252: I tensorflow/stream_executor/stream.cc:1035] [stream=0000028230E4B490,impl=000002823078E930] did not wait for [stream=0000028230E4B3F0,impl=000002823078E4E0]
+2024-04-15 02:12:40.409102: F tensorflow/core/common_runtime/gpu/gpu_util.cc:386] CPU->GPU Memcpy failed
+(venv) 
+
+theor@Theo MINGW64 ~/OneDrive/Desktop/Master/Project/rf_anomaly_detection (main)
+$ python advance_model.py 
+Reloading Tuner from keras_tuning\cnn_rnn_tuner\tuner0.json
+
+Search: Running Trial #7
+
+Value             |Best Value So Far |Hyperparameter
+96                |64                |conv_filters
+3                 |5                 |conv_kernel
+0.2               |0                 |dropout_cnn
+32                |96                |lstm_units
+0.1               |0.3               |dropout_rnn
+
+2024-04-15 07:31:32.428239: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-04-15 07:31:32.837049: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 5449 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4060 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9
+Epoch 1/10
+2024-04-15 07:31:34.221491: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8700
+2024-04-15 07:31:35.277681: I tensorflow/stream_executor/cuda/cuda_blas.cc:1614] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+103/103 [==============================] - 194s 2s/step - loss: 0.6970 - accuracy: 0.4989 - val_loss: 0.6926 - val_accuracy: 0.5122
+Epoch 2/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6953 - accuracy: 0.4963 - val_loss: 0.6930 - val_accuracy: 0.5120
+Epoch 3/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6941 - accuracy: 0.5019 - val_loss: 0.6925 - val_accuracy: 0.5122
+Epoch 4/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6940 - accuracy: 0.5021 - val_loss: 0.6925 - val_accuracy: 0.5115
+Epoch 5/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6938 - accuracy: 0.5030 - val_loss: 0.6928 - val_accuracy: 0.5122
+Epoch 6/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6940 - accuracy: 0.5019 - val_loss: 0.6926 - val_accuracy: 0.5116
+Epoch 7/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6938 - accuracy: 0.5019 - val_loss: 0.6928 - val_accuracy: 0.5121
+Epoch 8/10
+103/103 [==============================] - 190s 2s/step - loss: 0.6938 - accuracy: 0.5055 - val_loss: 0.6991 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 188s 2s/step - loss: 0.6942 - accuracy: 0.5018 - val_loss: 0.6925 - val_accuracy: 0.5115
+Epoch 10/10
+103/103 [==============================] - 189s 2s/step - loss: 0.6933 - accuracy: 0.5099 - val_loss: 0.6926 - val_accuracy: 0.5120
+Epoch 1/10
+103/103 [==============================] - 191s 2s/step - loss: 0.7028 - accuracy: 0.4992 - val_loss: 0.6928 - val_accuracy: 0.5122
+Epoch 2/10
+103/103 [==============================] - 190s 2s/step - loss: 0.6977 - accuracy: 0.4979 - val_loss: 0.6929 - val_accuracy: 0.5122
+Epoch 3/10
+103/103 [==============================] - 189s 2s/step - loss: 0.6969 - accuracy: 0.5001 - val_loss: 0.6929 - val_accuracy: 0.5101
+Epoch 4/10
+103/103 [==============================] - 189s 2s/step - loss: 0.6969 - accuracy: 0.5014 - val_loss: 0.6929 - val_accuracy: 0.5122
+Epoch 5/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6969 - accuracy: 0.4996 - val_loss: 0.6929 - val_accuracy: 0.5122
+Epoch 6/10
+103/103 [==============================] - 254s 2s/step - loss: 0.6968 - accuracy: 0.4997 - val_loss: 0.6931 - val_accuracy: 0.5091
+Epoch 7/10
+103/103 [==============================] - 341s 3s/step - loss: 0.6965 - accuracy: 0.4963 - val_loss: 0.6929 - val_accuracy: 0.5121
+Epoch 8/10
+103/103 [==============================] - 339s 3s/step - loss: 0.6962 - accuracy: 0.4963 - val_loss: 0.6929 - val_accuracy: 0.5122
+Epoch 9/10
+103/103 [==============================] - 337s 3s/step - loss: 0.6963 - accuracy: 0.4935 - val_loss: 0.6930 - val_accuracy: 0.5120
+Epoch 10/10
+103/103 [==============================] - 337s 3s/step - loss: 0.6960 - accuracy: 0.4962 - val_loss: 0.6930 - val_accuracy: 0.5121
+Trial 7 Complete [01h 14m 47s]
+val_accuracy: 0.5121932625770569
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 1d 19h 30m 18s
+
+Search: Running Trial #8
+
+Value             |Best Value So Far |Hyperparameter
+32                |64                |conv_filters
+4                 |5                 |conv_kernel
+0.1               |0                 |dropout_cnn
+96                |96                |lstm_units
+0.4               |0.3               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 348s 3s/step - loss: 0.7164 - accuracy: 0.5200 - val_loss: 0.6721 - val_accuracy: 0.4965
+Epoch 2/10
+103/103 [==============================] - 344s 3s/step - loss: 0.6804 - accuracy: 0.5726 - val_loss: 0.6806 - val_accuracy: 0.5114
+Epoch 3/10
+103/103 [==============================] - 289s 3s/step - loss: 0.6857 - accuracy: 0.5490 - val_loss: 0.6854 - val_accuracy: 0.4878
+Epoch 4/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6689 - accuracy: 0.5899 - val_loss: 0.6764 - val_accuracy: 0.4878
+Epoch 5/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6541 - accuracy: 0.6144 - val_loss: 0.7693 - val_accuracy: 0.4878
+Epoch 6/10
+103/103 [==============================] - 206s 2s/step - loss: 0.5420 - accuracy: 0.7425 - val_loss: 0.6540 - val_accuracy: 0.6360
+Epoch 7/10
+103/103 [==============================] - 207s 2s/step - loss: 0.5771 - accuracy: 0.7698 - val_loss: 0.6859 - val_accuracy: 0.8937
+Epoch 8/10
+103/103 [==============================] - 207s 2s/step - loss: 0.7558 - accuracy: 0.5104 - val_loss: 0.6819 - val_accuracy: 0.5312
+Epoch 9/10
+103/103 [==============================] - 207s 2s/step - loss: 0.7315 - accuracy: 0.5188 - val_loss: 0.6798 - val_accuracy: 0.5116
+Epoch 10/10
+103/103 [==============================] - 207s 2s/step - loss: 0.7079 - accuracy: 0.5312 - val_loss: 0.6680 - val_accuracy: 0.5032
+Epoch 1/10
+103/103 [==============================] - 207s 2s/step - loss: 0.7243 - accuracy: 0.5105 - val_loss: 0.6991 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 207s 2s/step - loss: 0.7011 - accuracy: 0.5177 - val_loss: 0.6856 - val_accuracy: 0.5047
+Epoch 3/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6847 - accuracy: 0.5553 - val_loss: 0.6704 - val_accuracy: 0.5114
+Epoch 4/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6974 - accuracy: 0.5800 - val_loss: 0.6721 - val_accuracy: 0.4964
+Epoch 5/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6650 - accuracy: 0.6170 - val_loss: 0.6862 - val_accuracy: 0.5117
+Epoch 6/10
+103/103 [==============================] - 207s 2s/step - loss: 0.7181 - accuracy: 0.5254 - val_loss: 0.6569 - val_accuracy: 0.6900
+Epoch 7/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6724 - accuracy: 0.5887 - val_loss: 0.8704 - val_accuracy: 0.4878
+Epoch 8/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6648 - accuracy: 0.6228 - val_loss: 0.6665 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6056 - accuracy: 0.6874 - val_loss: 1.2048 - val_accuracy: 0.4879
+Epoch 10/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6179 - accuracy: 0.6717 - val_loss: 0.6651 - val_accuracy: 0.4881
+Trial 8 Complete [01h 14m 50s]
+val_accuracy: 0.7918397188186646
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 1d 20h 45m 08s
+
+Search: Running Trial #9
+
+Value             |Best Value So Far |Hyperparameter
+64                |64                |conv_filters
+4                 |5                 |conv_kernel
+0.1               |0                 |dropout_cnn
+64                |96                |lstm_units
+0.4               |0.3               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 197s 2s/step - loss: 0.7176 - accuracy: 0.5108 - val_loss: 0.6947 - val_accuracy: 0.5121
+Epoch 2/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6940 - accuracy: 0.5271 - val_loss: 0.6935 - val_accuracy: 0.5122
+Epoch 3/10
+103/103 [==============================] - 196s 2s/step - loss: 0.6937 - accuracy: 0.5131 - val_loss: 0.6918 - val_accuracy: 0.4878
+Epoch 4/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6918 - accuracy: 0.5204 - val_loss: 0.6890 - val_accuracy: 0.5116
+Epoch 5/10
+103/103 [==============================] - 196s 2s/step - loss: 0.6879 - accuracy: 0.5360 - val_loss: 0.6831 - val_accuracy: 0.5183
+Epoch 6/10
+103/103 [==============================] - 196s 2s/step - loss: 0.6882 - accuracy: 0.5382 - val_loss: 0.6871 - val_accuracy: 0.5113
+Epoch 7/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6826 - accuracy: 0.5510 - val_loss: 0.6794 - val_accuracy: 0.5570
+Epoch 8/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6755 - accuracy: 0.5720 - val_loss: 0.6594 - val_accuracy: 0.4960
+Epoch 9/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6691 - accuracy: 0.5759 - val_loss: 0.6545 - val_accuracy: 0.4878
+Epoch 10/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6656 - accuracy: 0.5660 - val_loss: 0.6785 - val_accuracy: 0.7688
+Epoch 1/10
+103/103 [==============================] - 197s 2s/step - loss: 0.7155 - accuracy: 0.5046 - val_loss: 0.6905 - val_accuracy: 0.5116
+Epoch 2/10
+103/103 [==============================] - 195s 2s/step - loss: 0.7006 - accuracy: 0.5077 - val_loss: 0.6946 - val_accuracy: 0.4878
+Epoch 3/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6979 - accuracy: 0.5123 - val_loss: 0.6931 - val_accuracy: 0.4878
+Epoch 4/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6966 - accuracy: 0.5011 - val_loss: 0.6926 - val_accuracy: 0.5119
+Epoch 5/10
+103/103 [==============================] - 196s 2s/step - loss: 0.6977 - accuracy: 0.5055 - val_loss: 0.6924 - val_accuracy: 0.5121
+Epoch 6/10
+103/103 [==============================] - 195s 2s/step - loss: 0.6952 - accuracy: 0.5026 - val_loss: 0.6921 - val_accuracy: 0.5120
+Epoch 7/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6934 - accuracy: 0.5113 - val_loss: 0.6895 - val_accuracy: 0.4878
+Epoch 8/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6948 - accuracy: 0.5043 - val_loss: 0.6918 - val_accuracy: 0.5120
+Epoch 9/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6922 - accuracy: 0.5188 - val_loss: 0.6914 - val_accuracy: 0.5120
+Epoch 10/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6922 - accuracy: 0.5191 - val_loss: 0.6879 - val_accuracy: 0.5114
+Trial 9 Complete [01h 05m 05s]
+val_accuracy: 0.6404776275157928
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 1d 21h 50m 13s
+
+Search: Running Trial #10
+
+Value             |Best Value So Far |Hyperparameter
+128               |64                |conv_filters
+3                 |5                 |conv_kernel
+0.4               |0                 |dropout_cnn
+96                |96                |lstm_units
+0.1               |0.3               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 214s 2s/step - loss: 0.7182 - accuracy: 0.4791 - val_loss: 0.6929 - val_accuracy: 0.4879
+Epoch 2/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6976 - accuracy: 0.4990 - val_loss: 0.6922 - val_accuracy: 0.5119
+Epoch 3/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6967 - accuracy: 0.5018 - val_loss: 0.6913 - val_accuracy: 0.9197
+Epoch 4/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6967 - accuracy: 0.4988 - val_loss: 0.6917 - val_accuracy: 0.5120
+Epoch 5/10
+103/103 [==============================] - 214s 2s/step - loss: 0.6954 - accuracy: 0.5046 - val_loss: 0.6910 - val_accuracy: 0.5116
+Epoch 6/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6944 - accuracy: 0.5167 - val_loss: 0.6904 - val_accuracy: 0.4878
+Epoch 7/10
+103/103 [==============================] - 214s 2s/step - loss: 0.6961 - accuracy: 0.5062 - val_loss: 0.6914 - val_accuracy: 0.5197
+Epoch 8/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6941 - accuracy: 0.5131 - val_loss: 0.6899 - val_accuracy: 0.5116
+Epoch 9/10
+103/103 [==============================] - 216s 2s/step - loss: 0.6944 - accuracy: 0.5099 - val_loss: 0.6891 - val_accuracy: 0.5115
+Epoch 10/10
+103/103 [==============================] - 214s 2s/step - loss: 0.6932 - accuracy: 0.5190 - val_loss: 0.6942 - val_accuracy: 0.4878
+Epoch 1/10
+103/103 [==============================] - 215s 2s/step - loss: 0.7060 - accuracy: 0.5054 - val_loss: 0.6922 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6969 - accuracy: 0.5073 - val_loss: 0.6915 - val_accuracy: 0.5119
+Epoch 3/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6959 - accuracy: 0.5064 - val_loss: 0.6887 - val_accuracy: 0.6344
+Epoch 4/10
+103/103 [==============================] - 214s 2s/step - loss: 0.6937 - accuracy: 0.5156 - val_loss: 0.6920 - val_accuracy: 0.5120
+Epoch 5/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6931 - accuracy: 0.5216 - val_loss: 0.6893 - val_accuracy: 0.5117
+Epoch 6/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6942 - accuracy: 0.5145 - val_loss: 0.6904 - val_accuracy: 0.5118
+Epoch 7/10
+103/103 [==============================] - 214s 2s/step - loss: 0.6918 - accuracy: 0.5244 - val_loss: 0.6845 - val_accuracy: 0.5116
+Epoch 8/10
+103/103 [==============================] - 215s 2s/step - loss: 0.6942 - accuracy: 0.5211 - val_loss: 0.6910 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 214s 2s/step - loss: 0.6924 - accuracy: 0.5239 - val_loss: 0.6886 - val_accuracy: 0.5117
+Epoch 10/10
+103/103 [==============================] - 214s 2s/step - loss: 0.6950 - accuracy: 0.5170 - val_loss: 0.6899 - val_accuracy: 0.5116
+Trial 10 Complete [01h 11m 32s]
+val_accuracy: 0.7770765721797943
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 1d 23h 01m 45s
+13/13 [==============================] - 11s 831ms/step - loss: 0.5644 - accuracy: 0.8460
+[0.5644446015357971, 0.8459866642951965]
+(venv) 
+theor@Theo MINGW64 ~/OneDrive/Desktop/Master/Project/rf_anomaly_detection (main)
+Reloading Tuner from keras_tuning\cnn_rnn_tuner\tuner0.json
+
+Search: Running Trial #11
+
+Value             |Best Value So Far |Hyperparameter
+128               |64                |conv_filters
+3                 |5                 |conv_kernel
+0                 |0                 |dropout_cnn
+64                |96                |lstm_units
+0.2               |0.3               |dropout_rnn
+
+2024-04-15 15:22:24.020393: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-04-15 15:22:24.422002: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 5449 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4060 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9
+Epoch 1/10
+2024-04-15 15:22:25.795490: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8700
+2024-04-15 15:22:26.909761: I tensorflow/stream_executor/cuda/cuda_blas.cc:1614] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+103/103 [==============================] - 200s 2s/step - loss: 0.7061 - accuracy: 0.5210 - val_loss: 0.6935 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6991 - accuracy: 0.5228 - val_loss: 0.6873 - val_accuracy: 0.5117
+Epoch 3/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6912 - accuracy: 0.5418 - val_loss: 0.6771 - val_accuracy: 0.5084
+Epoch 4/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6919 - accuracy: 0.5392 - val_loss: 0.6800 - val_accuracy: 0.5116
+Epoch 5/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6899 - accuracy: 0.5381 - val_loss: 0.6834 - val_accuracy: 0.4984
+Epoch 6/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6923 - accuracy: 0.5343 - val_loss: 0.6858 - val_accuracy: 0.5117
+Epoch 7/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6867 - accuracy: 0.5464 - val_loss: 0.6653 - val_accuracy: 0.5811
+Epoch 8/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6778 - accuracy: 0.5681 - val_loss: 0.6692 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6864 - accuracy: 0.5453 - val_loss: 0.6718 - val_accuracy: 0.6772
+Epoch 10/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6721 - accuracy: 0.5829 - val_loss: 0.6464 - val_accuracy: 0.7359
+Epoch 1/10
+103/103 [==============================] - 204s 2s/step - loss: 0.7037 - accuracy: 0.5139 - val_loss: 0.6823 - val_accuracy: 0.6016
+Epoch 2/10
+103/103 [==============================] - 204s 2s/step - loss: 0.6951 - accuracy: 0.5280 - val_loss: 0.7132 - val_accuracy: 0.4878
+Epoch 3/10
+103/103 [==============================] - 203s 2s/step - loss: 0.7051 - accuracy: 0.5105 - val_loss: 0.6897 - val_accuracy: 0.4878
+Epoch 4/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6948 - accuracy: 0.5261 - val_loss: 0.6860 - val_accuracy: 0.4878
+Epoch 5/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6879 - accuracy: 0.5453 - val_loss: 0.6741 - val_accuracy: 0.5115
+Epoch 6/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6876 - accuracy: 0.5522 - val_loss: 0.6813 - val_accuracy: 0.5156
+Epoch 7/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6965 - accuracy: 0.5277 - val_loss: 0.6780 - val_accuracy: 0.7433
+Epoch 8/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6812 - accuracy: 0.5612 - val_loss: 0.6792 - val_accuracy: 0.5116
+Epoch 9/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6826 - accuracy: 0.5583 - val_loss: 0.6743 - val_accuracy: 0.4881
+Epoch 10/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6606 - accuracy: 0.6010 - val_loss: 0.6064 - val_accuracy: 0.7794
+Trial 11 Complete [01h 07m 34s]
+val_accuracy: 0.7576282024383545
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 2d 03h 13m 57s
+
+Search: Running Trial #12
+
+Value             |Best Value So Far |Hyperparameter
+96                |64                |conv_filters
+5                 |5                 |conv_kernel
+0.4               |0                 |dropout_cnn
+128               |96                |lstm_units
+0.1               |0.3               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 206s 2s/step - loss: 0.7149 - accuracy: 0.4885 - val_loss: 0.6952 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6984 - accuracy: 0.4966 - val_loss: 0.6926 - val_accuracy: 0.5122
+Epoch 3/10
+103/103 [==============================] - 207s 2s/step - loss: 0.6953 - accuracy: 0.5170 - val_loss: 0.6911 - val_accuracy: 0.4879
+Epoch 4/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6975 - accuracy: 0.4966 - val_loss: 0.6919 - val_accuracy: 0.5120
+Epoch 5/10
+103/103 [==============================] - 207s 2s/step - loss: 0.6942 - accuracy: 0.5075 - val_loss: 0.6925 - val_accuracy: 0.5121
+Epoch 6/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6935 - accuracy: 0.5149 - val_loss: 0.6930 - val_accuracy: 0.5121
+Epoch 7/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6900 - accuracy: 0.5315 - val_loss: 0.6874 - val_accuracy: 0.5111
+Epoch 8/10
+103/103 [==============================] - 207s 2s/step - loss: 0.6915 - accuracy: 0.5258 - val_loss: 0.6863 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6940 - accuracy: 0.5289 - val_loss: 0.6933 - val_accuracy: 0.4878
+Epoch 10/10
+103/103 [==============================] - 207s 2s/step - loss: 0.6927 - accuracy: 0.5170 - val_loss: 0.6941 - val_accuracy: 0.4878
+Epoch 1/10
+103/103 [==============================] - 206s 2s/step - loss: 0.7137 - accuracy: 0.4957 - val_loss: 0.6923 - val_accuracy: 0.5121
+Epoch 2/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6984 - accuracy: 0.5076 - val_loss: 0.6949 - val_accuracy: 0.5122
+Epoch 3/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6978 - accuracy: 0.5071 - val_loss: 0.6911 - val_accuracy: 0.4878
+Epoch 4/10
+103/103 [==============================] - 204s 2s/step - loss: 0.6945 - accuracy: 0.5168 - val_loss: 0.6897 - val_accuracy: 0.4878
+Epoch 5/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6956 - accuracy: 0.5167 - val_loss: 0.6870 - val_accuracy: 0.8640
+Epoch 6/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6922 - accuracy: 0.5255 - val_loss: 0.6820 - val_accuracy: 0.4878
+Epoch 7/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6969 - accuracy: 0.5203 - val_loss: 0.6946 - val_accuracy: 0.4878
+Epoch 8/10
+103/103 [==============================] - 204s 2s/step - loss: 0.6909 - accuracy: 0.5276 - val_loss: 0.6904 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6901 - accuracy: 0.5317 - val_loss: 0.6891 - val_accuracy: 0.4878
+Epoch 10/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6812 - accuracy: 0.5757 - val_loss: 0.6921 - val_accuracy: 0.4878
+Trial 12 Complete [01h 08m 34s]
+val_accuracy: 0.6880965828895569
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 2d 04h 22m 30s
+
+Search: Running Trial #13
+
+Value             |Best Value So Far |Hyperparameter
+64                |64                |conv_filters
+5                 |5                 |conv_kernel
+0.3               |0                 |dropout_cnn
+32                |96                |lstm_units
+0.4               |0.3               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 195s 2s/step - loss: 0.7181 - accuracy: 0.4986 - val_loss: 0.6948 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 194s 2s/step - loss: 0.7012 - accuracy: 0.4952 - val_loss: 0.6930 - val_accuracy: 0.5122
+Epoch 3/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6948 - accuracy: 0.5002 - val_loss: 0.6928 - val_accuracy: 0.5122
+Epoch 4/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6939 - accuracy: 0.4976 - val_loss: 0.6928 - val_accuracy: 0.5122
+Epoch 5/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6937 - accuracy: 0.4967 - val_loss: 0.6928 - val_accuracy: 0.5122
+Epoch 6/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6935 - accuracy: 0.4970 - val_loss: 0.6928 - val_accuracy: 0.5122
+Epoch 7/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6934 - accuracy: 0.4972 - val_loss: 0.6930 - val_accuracy: 0.5121
+Epoch 8/10
+103/103 [==============================] - 194s 2s/step - loss: 0.6933 - accuracy: 0.4986 - val_loss: 0.6930 - val_accuracy: 0.5118
+Epoch 9/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6934 - accuracy: 0.4971 - val_loss: 0.6930 - val_accuracy: 0.5121
+Epoch 10/10
+103/103 [==============================] - 193s 2s/step - loss: 0.6934 - accuracy: 0.4980 - val_loss: 0.6931 - val_accuracy: 0.5110
+Epoch 1/10
+103/103 [==============================] - 195s 2s/step - loss: 0.7226 - accuracy: 0.5003 - val_loss: 0.6950 - val_accuracy: 0.5122
+Epoch 2/10
+103/103 [==============================] - 192s 2s/step - loss: 0.6979 - accuracy: 0.4981 - val_loss: 0.6930 - val_accuracy: 0.4878
+Epoch 3/10
+103/103 [==============================] - 239s 2s/step - loss: 0.6938 - accuracy: 0.5006 - val_loss: 0.6930 - val_accuracy: 0.5122
+Epoch 4/10
+103/103 [==============================] - 334s 3s/step - loss: 0.6934 - accuracy: 0.4956 - val_loss: 0.6931 - val_accuracy: 0.5122
+Epoch 5/10
+103/103 [==============================] - 331s 3s/step - loss: 0.6933 - accuracy: 0.5011 - val_loss: 0.6931 - val_accuracy: 0.5122
+Epoch 6/10
+103/103 [==============================] - 334s 3s/step - loss: 0.6932 - accuracy: 0.5055 - val_loss: 0.6930 - val_accuracy: 0.5122
+Epoch 7/10
+103/103 [==============================] - 332s 3s/step - loss: 0.6931 - accuracy: 0.5081 - val_loss: 0.6929 - val_accuracy: 0.5112
+Epoch 8/10
+103/103 [==============================] - 331s 3s/step - loss: 0.6936 - accuracy: 0.5077 - val_loss: 0.6929 - val_accuracy: 0.5114
+Epoch 9/10
+103/103 [==============================] - 333s 3s/step - loss: 0.6932 - accuracy: 0.5092 - val_loss: 0.6929 - val_accuracy: 0.5121
+Epoch 10/10
+103/103 [==============================] - 343s 3s/step - loss: 0.6930 - accuracy: 0.5113 - val_loss: 0.6926 - val_accuracy: 0.5028
+Trial 13 Complete [01h 21m 42s]
+val_accuracy: 0.5121951103210449
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 2d 05h 44m 13s
+
+Search: Running Trial #14
+
+Value             |Best Value So Far |Hyperparameter
+32                |64                |conv_filters
+5                 |5                 |conv_kernel
+0.1               |0                 |dropout_cnn
+96                |96                |lstm_units
+0                 |0.3               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 341s 3s/step - loss: 0.6909 - accuracy: 0.5316 - val_loss: 0.7908 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 346s 3s/step - loss: 0.6820 - accuracy: 0.5698 - val_loss: 0.7480 - val_accuracy: 0.4878
+Epoch 3/10
+103/103 [==============================] - 298s 3s/step - loss: 0.6745 - accuracy: 0.5811 - val_loss: 0.6798 - val_accuracy: 0.4879
+Epoch 4/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6493 - accuracy: 0.6374 - val_loss: 0.7434 - val_accuracy: 0.4879
+Epoch 5/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6003 - accuracy: 0.6908 - val_loss: 0.7370 - val_accuracy: 0.4881
+Epoch 6/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6839 - accuracy: 0.5955 - val_loss: 0.7001 - val_accuracy: 0.4879
+Epoch 7/10
+103/103 [==============================] - 209s 2s/step - loss: 0.6846 - accuracy: 0.5590 - val_loss: 0.7590 - val_accuracy: 0.4878
+Epoch 8/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6776 - accuracy: 0.5913 - val_loss: 0.8512 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 206s 2s/step - loss: 0.6282 - accuracy: 0.6586 - val_loss: 1.1097 - val_accuracy: 0.4879
+Epoch 10/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6588 - accuracy: 0.6554 - val_loss: 0.8561 - val_accuracy: 0.4878
+Epoch 1/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6928 - accuracy: 0.5326 - val_loss: 0.6841 - val_accuracy: 0.6902
+Epoch 2/10
+103/103 [==============================] - 207s 2s/step - loss: 0.6801 - accuracy: 0.5670 - val_loss: 0.6705 - val_accuracy: 0.6380
+Epoch 3/10
+103/103 [==============================] - 210s 2s/step - loss: 0.6876 - accuracy: 0.5442 - val_loss: 0.6834 - val_accuracy: 0.8181
+Epoch 4/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6716 - accuracy: 0.6018 - val_loss: 0.6804 - val_accuracy: 0.4898
+Epoch 5/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6521 - accuracy: 0.6495 - val_loss: 0.7196 - val_accuracy: 0.4926
+Epoch 6/10
+103/103 [==============================] - 208s 2s/step - loss: 0.6142 - accuracy: 0.6816 - val_loss: 0.7563 - val_accuracy: 0.5015
+Epoch 7/10
+103/103 [==============================] - 209s 2s/step - loss: 0.6807 - accuracy: 0.6172 - val_loss: 0.9192 - val_accuracy: 0.4878
+Epoch 8/10
+103/103 [==============================] - 208s 2s/step - loss: 0.5902 - accuracy: 0.6777 - val_loss: 0.6014 - val_accuracy: 0.6823
+Epoch 9/10
+103/103 [==============================] - 209s 2s/step - loss: 0.6741 - accuracy: 0.5977 - val_loss: 0.6932 - val_accuracy: 0.4920
+Epoch 10/10
+103/103 [==============================] - 207s 2s/step - loss: 0.6383 - accuracy: 0.6955 - val_loss: 0.9800 - val_accuracy: 0.4878
+Trial 14 Complete [01h 15m 21s]
+val_accuracy: 0.6531057357788086
+
+Best val_accuracy So Far: 0.8027350902557373
+Total elapsed time: 2d 06h 59m 33s
+
+Search: Running Trial #15
+
+Value             |Best Value So Far |Hyperparameter
+64                |64                |conv_filters
+5                 |5                 |conv_kernel
+0                 |0                 |dropout_cnn
+128               |96                |lstm_units
+0.2               |0.3               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 204s 2s/step - loss: 0.6804 - accuracy: 0.5711 - val_loss: 0.6421 - val_accuracy: 0.7954
+Epoch 2/10
+103/103 [==============================] - 204s 2s/step - loss: 0.6701 - accuracy: 0.5888 - val_loss: 0.7000 - val_accuracy: 0.5116
+Epoch 3/10
+103/103 [==============================] - 204s 2s/step - loss: 0.6557 - accuracy: 0.6086 - val_loss: 0.6618 - val_accuracy: 0.5120
+Epoch 4/10
+103/103 [==============================] - 204s 2s/step - loss: 0.6456 - accuracy: 0.6212 - val_loss: 0.5932 - val_accuracy: 0.6704
+Epoch 5/10
+103/103 [==============================] - 204s 2s/step - loss: 0.5075 - accuracy: 0.7516 - val_loss: 0.4938 - val_accuracy: 0.7387
+Epoch 6/10
+103/103 [==============================] - 205s 2s/step - loss: 0.4170 - accuracy: 0.8275 - val_loss: 0.9450 - val_accuracy: 0.4878
+Epoch 7/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6068 - accuracy: 0.6714 - val_loss: 0.3199 - val_accuracy: 0.9077
+Epoch 8/10
+103/103 [==============================] - 205s 2s/step - loss: 0.3367 - accuracy: 0.8746 - val_loss: 0.3150 - val_accuracy: 0.8826
+Epoch 9/10
+103/103 [==============================] - 204s 2s/step - loss: 0.5304 - accuracy: 0.7376 - val_loss: 0.3430 - val_accuracy: 0.8573
+Epoch 10/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6802 - accuracy: 0.6221 - val_loss: 0.5940 - val_accuracy: 0.8408
+Epoch 1/10
+103/103 [==============================] - 205s 2s/step - loss: 0.6999 - accuracy: 0.5381 - val_loss: 0.6677 - val_accuracy: 0.7986
+Epoch 2/10
+103/103 [==============================] - 204s 2s/step - loss: 0.6522 - accuracy: 0.6130 - val_loss: 0.6136 - val_accuracy: 0.7551
+Epoch 3/10
+103/103 [==============================] - 204s 2s/step - loss: 0.5885 - accuracy: 0.6811 - val_loss: 0.5012 - val_accuracy: 0.7183
+Epoch 4/10
+103/103 [==============================] - 204s 2s/step - loss: 0.5734 - accuracy: 0.7084 - val_loss: 0.6514 - val_accuracy: 0.4895
+Epoch 5/10
+103/103 [==============================] - 204s 2s/step - loss: 0.5466 - accuracy: 0.7399 - val_loss: 0.5121 - val_accuracy: 0.7812
+Epoch 6/10
+103/103 [==============================] - 204s 2s/step - loss: 0.5331 - accuracy: 0.7220 - val_loss: 0.6381 - val_accuracy: 0.7600
+Epoch 7/10
+103/103 [==============================] - 204s 2s/step - loss: 0.6076 - accuracy: 0.6639 - val_loss: 0.4892 - val_accuracy: 0.7350
+Epoch 8/10
+103/103 [==============================] - 204s 2s/step - loss: 0.3487 - accuracy: 0.8553 - val_loss: 0.9605 - val_accuracy: 0.6420
+Epoch 9/10
+103/103 [==============================] - 205s 2s/step - loss: 0.4409 - accuracy: 0.8081 - val_loss: 0.3636 - val_accuracy: 0.8571
+Epoch 10/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6061 - accuracy: 0.6781 - val_loss: 0.6496 - val_accuracy: 0.8263
+Trial 15 Complete [01h 08m 04s]
+val_accuracy: 0.8823946416378021
+
+Best val_accuracy So Far: 0.8823946416378021
+Total elapsed time: 2d 08h 07m 37s
+
+Search: Running Trial #16
+
+Value             |Best Value So Far |Hyperparameter
+128               |64                |conv_filters
+3                 |5                 |conv_kernel
+0.1               |0                 |dropout_cnn
+64                |128               |lstm_units
+0.1               |0.2               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 203s 2s/step - loss: 0.7041 - accuracy: 0.5101 - val_loss: 0.6931 - val_accuracy: 0.5122
+Epoch 2/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6990 - accuracy: 0.4981 - val_loss: 0.6918 - val_accuracy: 0.5119
+Epoch 3/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6967 - accuracy: 0.5091 - val_loss: 0.6917 - val_accuracy: 0.5120
+Epoch 4/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6953 - accuracy: 0.5153 - val_loss: 0.6867 - val_accuracy: 0.5116
+Epoch 5/10
+103/103 [==============================] - 201s 2s/step - loss: 0.6945 - accuracy: 0.5238 - val_loss: 0.6983 - val_accuracy: 0.5122
+Epoch 6/10
+103/103 [==============================] - 200s 2s/step - loss: 0.6974 - accuracy: 0.5070 - val_loss: 0.6890 - val_accuracy: 0.5116
+Epoch 7/10
+103/103 [==============================] - 201s 2s/step - loss: 0.6923 - accuracy: 0.5284 - val_loss: 0.6812 - val_accuracy: 0.4878
+Epoch 8/10
+103/103 [==============================] - 201s 2s/step - loss: 0.6990 - accuracy: 0.5062 - val_loss: 0.6864 - val_accuracy: 0.5113
+Epoch 9/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6977 - accuracy: 0.5100 - val_loss: 0.6784 - val_accuracy: 0.6809
+Epoch 10/10
+103/103 [==============================] - 201s 2s/step - loss: 0.6943 - accuracy: 0.5213 - val_loss: 0.7031 - val_accuracy: 0.4878
+Epoch 1/10
+103/103 [==============================] - 203s 2s/step - loss: 0.7031 - accuracy: 0.5055 - val_loss: 0.6910 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6958 - accuracy: 0.5181 - val_loss: 0.6874 - val_accuracy: 0.5113
+Epoch 3/10
+103/103 [==============================] - 203s 2s/step - loss: 0.6954 - accuracy: 0.5165 - val_loss: 0.6909 - val_accuracy: 0.5120
+Epoch 4/10
+103/103 [==============================] - 201s 2s/step - loss: 0.6955 - accuracy: 0.5223 - val_loss: 0.6905 - val_accuracy: 0.5119
+Epoch 5/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6947 - accuracy: 0.5203 - val_loss: 0.6836 - val_accuracy: 0.5231
+Epoch 6/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6916 - accuracy: 0.5302 - val_loss: 0.6830 - val_accuracy: 0.5116
+Epoch 7/10
+103/103 [==============================] - 201s 2s/step - loss: 0.6902 - accuracy: 0.5350 - val_loss: 0.6794 - val_accuracy: 0.5636
+Epoch 8/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6841 - accuracy: 0.5564 - val_loss: 0.6728 - val_accuracy: 0.5111
+Epoch 9/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6960 - accuracy: 0.5229 - val_loss: 0.6915 - val_accuracy: 0.5120
+Epoch 10/10
+103/103 [==============================] - 202s 2s/step - loss: 0.6923 - accuracy: 0.5256 - val_loss: 0.6851 - val_accuracy: 0.4878
+Trial 16 Complete [01h 07m 17s]
+val_accuracy: 0.6222372949123383
+
+Best val_accuracy So Far: 0.8823946416378021
+Total elapsed time: 2d 09h 14m 55s
+
+Search: Running Trial #17
+
+Value             |Best Value So Far |Hyperparameter
+32                |64                |conv_filters
+3                 |5                 |conv_kernel
+0                 |0                 |dropout_cnn
+32                |128               |lstm_units
+0.2               |0.2               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 189s 2s/step - loss: 0.7044 - accuracy: 0.5227 - val_loss: 0.6829 - val_accuracy: 0.5115
+Epoch 2/10
+103/103 [==============================] - 189s 2s/step - loss: 0.7068 - accuracy: 0.5245 - val_loss: 0.6781 - val_accuracy: 0.7366
+Epoch 3/10
+103/103 [==============================] - 189s 2s/step - loss: 0.6993 - accuracy: 0.5308 - val_loss: 0.6764 - val_accuracy: 0.9429
+Epoch 4/10
+103/103 [==============================] - 188s 2s/step - loss: 0.6930 - accuracy: 0.5404 - val_loss: 0.6711 - val_accuracy: 0.6029
+Epoch 5/10
+103/103 [==============================] - 188s 2s/step - loss: 0.6816 - accuracy: 0.5636 - val_loss: 0.6750 - val_accuracy: 0.5116
+Epoch 6/10
+103/103 [==============================] - 218s 2s/step - loss: 0.6757 - accuracy: 0.5815 - val_loss: 0.6408 - val_accuracy: 0.5948
+Epoch 7/10
+103/103 [==============================] - 1233s 12s/step - loss: 0.6068 - accuracy: 0.6727 - val_loss: 0.4644 - val_accuracy: 0.8107
+Epoch 8/10
+103/103 [==============================] - 277s 3s/step - loss: 0.5123 - accuracy: 0.7624 - val_loss: 0.6139 - val_accuracy: 0.6432
+Epoch 9/10
+103/103 [==============================] - 308s 3s/step - loss: 0.4762 - accuracy: 0.7830 - val_loss: 0.3081 - val_accuracy: 0.9058
+Epoch 10/10
+103/103 [==============================] - 277s 3s/step - loss: 0.4227 - accuracy: 0.8298 - val_loss: 0.5299 - val_accuracy: 0.7686
+Epoch 1/10
+103/103 [==============================] - 280s 3s/step - loss: 0.7023 - accuracy: 0.5041 - val_loss: 0.6862 - val_accuracy: 0.5116
+Epoch 2/10
+103/103 [==============================] - 316s 3s/step - loss: 0.6940 - accuracy: 0.5298 - val_loss: 0.7089 - val_accuracy: 0.4878
+Epoch 3/10
+103/103 [==============================] - 318s 3s/step - loss: 0.7021 - accuracy: 0.5081 - val_loss: 0.6915 - val_accuracy: 0.4878
+Epoch 4/10
+103/103 [==============================] - 319s 3s/step - loss: 0.6922 - accuracy: 0.5277 - val_loss: 0.6860 - val_accuracy: 0.5241
+Epoch 5/10
+103/103 [==============================] - 316s 3s/step - loss: 0.6896 - accuracy: 0.5333 - val_loss: 0.6813 - val_accuracy: 0.5957
+Epoch 6/10
+103/103 [==============================] - 320s 3s/step - loss: 0.6949 - accuracy: 0.5106 - val_loss: 0.6826 - val_accuracy: 0.5299
+Epoch 7/10
+103/103 [==============================] - 325s 3s/step - loss: 0.6852 - accuracy: 0.5488 - val_loss: 0.6809 - val_accuracy: 0.5193
+Epoch 8/10
+103/103 [==============================] - 330s 3s/step - loss: 0.6857 - accuracy: 0.5497 - val_loss: 0.6754 - val_accuracy: 0.6500
+Epoch 9/10
+103/103 [==============================] - 325s 3s/step - loss: 0.6855 - accuracy: 0.5452 - val_loss: 0.6745 - val_accuracy: 0.5847
+Epoch 10/10
+103/103 [==============================] - 328s 3s/step - loss: 0.6774 - accuracy: 0.5673 - val_loss: 0.7041 - val_accuracy: 0.4908
+Trial 17 Complete [01h 47m 15s]
+val_accuracy: 0.7964237034320831
+
+Best val_accuracy So Far: 0.8823946416378021
+Total elapsed time: 2d 11h 02m 09s
+
+Search: Running Trial #18
+
+Value             |Best Value So Far |Hyperparameter
+64                |64                |conv_filters
+5                 |5                 |conv_kernel
+0.3               |0                 |dropout_cnn
+128               |128               |lstm_units
+0.1               |0.2               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 347s 3s/step - loss: 0.7025 - accuracy: 0.5185 - val_loss: 0.6890 - val_accuracy: 0.5119
+Epoch 2/10
+103/103 [==============================] - 2224s 22s/step - loss: 0.6923 - accuracy: 0.5292 - val_loss: 0.7107 - val_accuracy: 0.4878
+Epoch 3/10
+103/103 [==============================] - 311s 3s/step - loss: 0.6765 - accuracy: 0.5773 - val_loss: 0.8099 - val_accuracy: 0.4878
+Epoch 4/10
+103/103 [==============================] - 192s 2s/step - loss: 0.6775 - accuracy: 0.5701 - val_loss: 0.7253 - val_accuracy: 0.4878
+Epoch 5/10
+103/103 [==============================] - 167s 2s/step - loss: 0.6516 - accuracy: 0.6143 - val_loss: 1.6639 - val_accuracy: 0.4878
+Epoch 6/10
+103/103 [==============================] - 168s 2s/step - loss: 0.6579 - accuracy: 0.6162 - val_loss: 1.3948 - val_accuracy: 0.4878
+Epoch 7/10
+103/103 [==============================] - 171s 2s/step - loss: 0.5824 - accuracy: 0.7094 - val_loss: 1.6889 - val_accuracy: 0.4878
+Epoch 8/10
+103/103 [==============================] - 169s 2s/step - loss: 0.5395 - accuracy: 0.7187 - val_loss: 1.7185 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 168s 2s/step - loss: 0.6439 - accuracy: 0.6676 - val_loss: 1.4955 - val_accuracy: 0.4878
+Epoch 10/10
+103/103 [==============================] - 169s 2s/step - loss: 0.6668 - accuracy: 0.6397 - val_loss: 0.7133 - val_accuracy: 0.4878
+Epoch 1/10
+103/103 [==============================] - 169s 2s/step - loss: 0.7098 - accuracy: 0.4932 - val_loss: 0.6940 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 177s 2s/step - loss: 0.6984 - accuracy: 0.5108 - val_loss: 0.6918 - val_accuracy: 0.4878
+Epoch 3/10
+103/103 [==============================] - 241s 2s/step - loss: 0.6967 - accuracy: 0.5118 - val_loss: 0.6943 - val_accuracy: 0.4878
+Epoch 4/10
+103/103 [==============================] - 244s 2s/step - loss: 0.6986 - accuracy: 0.5066 - val_loss: 0.6910 - val_accuracy: 0.5120
+Epoch 5/10
+103/103 [==============================] - 243s 2s/step - loss: 0.6967 - accuracy: 0.5099 - val_loss: 0.6907 - val_accuracy: 0.5119
+Epoch 6/10
+103/103 [==============================] - 245s 2s/step - loss: 0.6947 - accuracy: 0.5119 - val_loss: 0.6867 - val_accuracy: 0.4878
+Epoch 7/10
+103/103 [==============================] - 245s 2s/step - loss: 0.6917 - accuracy: 0.5296 - val_loss: 0.6835 - val_accuracy: 0.5113
+Epoch 8/10
+103/103 [==============================] - 242s 2s/step - loss: 0.6880 - accuracy: 0.5420 - val_loss: 0.7073 - val_accuracy: 0.4878
+Epoch 9/10
+103/103 [==============================] - 242s 2s/step - loss: 0.6718 - accuracy: 0.5882 - val_loss: 0.6815 - val_accuracy: 0.5114
+Epoch 10/10
+103/103 [==============================] - 241s 2s/step - loss: 0.6922 - accuracy: 0.5229 - val_loss: 0.6845 - val_accuracy: 0.5304
+Trial 18 Complete [01h 46m 15s]
+val_accuracy: 0.5211755633354187
+
+Best val_accuracy So Far: 0.8823946416378021
+Total elapsed time: 2d 12h 48m 25s
+
+Search: Running Trial #19
+
+Value             |Best Value So Far |Hyperparameter
+32                |64                |conv_filters
+5                 |5                 |conv_kernel
+0                 |0                 |dropout_cnn
+32                |128               |lstm_units
+0.4               |0.2               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 231s 2s/step - loss: 0.7172 - accuracy: 0.5088 - val_loss: 0.6880 - val_accuracy: 0.4879
+Epoch 2/10
+103/103 [==============================] - 232s 2s/step - loss: 0.7062 - accuracy: 0.5068 - val_loss: 0.6894 - val_accuracy: 0.5110
+Epoch 3/10
+103/103 [==============================] - 229s 2s/step - loss: 0.7042 - accuracy: 0.5136 - val_loss: 0.6891 - val_accuracy: 0.5113
+Epoch 4/10
+103/103 [==============================] - 227s 2s/step - loss: 0.6954 - accuracy: 0.5246 - val_loss: 0.6890 - val_accuracy: 0.4878
+Epoch 5/10
+103/103 [==============================] - 229s 2s/step - loss: 0.6976 - accuracy: 0.5219 - val_loss: 0.6781 - val_accuracy: 0.5548
+Epoch 6/10
+103/103 [==============================] - 229s 2s/step - loss: 0.6907 - accuracy: 0.5331 - val_loss: 0.6811 - val_accuracy: 0.6823
+Epoch 7/10
+103/103 [==============================] - 228s 2s/step - loss: 0.6856 - accuracy: 0.5450 - val_loss: 0.6711 - val_accuracy: 0.6596
+Epoch 8/10
+103/103 [==============================] - 231s 2s/step - loss: 0.6816 - accuracy: 0.5552 - val_loss: 0.6875 - val_accuracy: 0.4881
+Epoch 9/10
+103/103 [==============================] - 232s 2s/step - loss: 0.6787 - accuracy: 0.5587 - val_loss: 0.6610 - val_accuracy: 0.7304
+Epoch 10/10
+103/103 [==============================] - 231s 2s/step - loss: 0.6672 - accuracy: 0.5885 - val_loss: 0.6695 - val_accuracy: 0.5793
+Epoch 1/10
+103/103 [==============================] - 231s 2s/step - loss: 0.7105 - accuracy: 0.5188 - val_loss: 0.6870 - val_accuracy: 0.6228
+Epoch 2/10
+103/103 [==============================] - 230s 2s/step - loss: 0.6905 - accuracy: 0.5346 - val_loss: 0.6853 - val_accuracy: 0.4878
+Epoch 3/10
+103/103 [==============================] - 231s 2s/step - loss: 0.6876 - accuracy: 0.5315 - val_loss: 0.6738 - val_accuracy: 0.5778
+Epoch 4/10
+103/103 [==============================] - 230s 2s/step - loss: 0.6808 - accuracy: 0.5535 - val_loss: 0.6780 - val_accuracy: 0.5841
+Epoch 5/10
+103/103 [==============================] - 229s 2s/step - loss: 0.6886 - accuracy: 0.5334 - val_loss: 0.6707 - val_accuracy: 0.6205
+Epoch 6/10
+103/103 [==============================] - 230s 2s/step - loss: 0.6841 - accuracy: 0.5429 - val_loss: 0.6842 - val_accuracy: 0.4902
+Epoch 7/10
+103/103 [==============================] - 235s 2s/step - loss: 0.6744 - accuracy: 0.5681 - val_loss: 0.6052 - val_accuracy: 0.7039
+Epoch 8/10
+103/103 [==============================] - 234s 2s/step - loss: 0.6629 - accuracy: 0.5870 - val_loss: 0.6656 - val_accuracy: 0.7083
+Epoch 9/10
+103/103 [==============================] - 231s 2s/step - loss: 0.6304 - accuracy: 0.6255 - val_loss: 0.5529 - val_accuracy: 0.7512
+Epoch 10/10
+103/103 [==============================] - 229s 2s/step - loss: 0.6143 - accuracy: 0.6538 - val_loss: 0.5436 - val_accuracy: 0.7612
+Trial 19 Complete [01h 16m 50s]
+val_accuracy: 0.7457895576953888
+
+Best val_accuracy So Far: 0.8823946416378021
+Total elapsed time: 2d 14h 05m 15s
+
+Search: Running Trial #20
+
+Value             |Best Value So Far |Hyperparameter
+128               |64                |conv_filters
+4                 |5                 |conv_kernel
+0.1               |0                 |dropout_cnn
+32                |128               |lstm_units
+0.1               |0.2               |dropout_rnn
+
+Epoch 1/10
+103/103 [==============================] - 233s 2s/step - loss: 0.7045 - accuracy: 0.5034 - val_loss: 0.6939 - val_accuracy: 0.4878
+Epoch 2/10
+103/103 [==============================] - 228s 2s/step - loss: 0.6993 - accuracy: 0.5036 - val_loss: 0.6926 - val_accuracy: 0.5121
+Epoch 3/10
+103/103 [==============================] - 229s 2s/step - loss: 0.6988 - accuracy: 0.5051 - val_loss: 0.6929 - val_accuracy: 0.5122
+Epoch 4/10
+103/103 [==============================] - 229s 2s/step - loss: 0.6984 - accuracy: 0.5054 - val_loss: 0.6918 - val_accuracy: 0.8131
+Epoch 5/10
+103/103 [==============================] - 231s 2s/step - loss: 0.6984 - accuracy: 0.5027 - val_loss: 0.6921 - val_accuracy: 0.6388
+Epoch 6/10
+103/103 [==============================] - 234s 2s/step - loss: 0.6981 - accuracy: 0.5053 - val_loss: 0.6927 - val_accuracy: 0.5121
+Epoch 7/10
+103/103 [==============================] - 231s 2s/step - loss: 0.6981 - accuracy: 0.5037 - val_loss: 0.6925 - val_accuracy: 0.5116
+Epoch 8/10
+103/103 [==============================] - 231s 2s/step - loss: 0.6977 - accuracy: 0.5054 - val_loss: 0.6925 - val_accuracy: 0.5120
+Epoch 9/10
+103/103 [==============================] - 228s 2s/step - loss: 0.6972 - accuracy: 0.5069 - val_loss: 0.6916 - val_accuracy: 0.5116
+Epoch 10/10
+103/103 [==============================] - 229s 2s/step - loss: 0.6970 - accuracy: 0.5070 - val_loss: 0.6920 - val_accuracy: 0.5119
+Epoch 1/10
+103/103 [==============================] - 231s 2s/step - loss: 0.7009 - accuracy: 0.5064 - val_loss: 0.6897 - val_accuracy: 0.5117
+Epoch 2/10
+103/103 [==============================] - 231s 2s/step - loss: 0.7004 - accuracy: 0.5036 - val_loss: 0.6929 - val_accuracy: 0.5122
+Epoch 3/10
+103/103 [==============================] - 229s 2s/step - loss: 0.6978 - accuracy: 0.5075 - val_loss: 0.6924 - val_accuracy: 0.5121
+Epoch 4/10
+103/103 [==============================] - 226s 2s/step - loss: 0.6976 - accuracy: 0.5050 - val_loss: 0.6920 - val_accuracy: 0.5120
+Epoch 5/10
+103/103 [==============================] - 226s 2s/step - loss: 0.6960 - accuracy: 0.5144 - val_loss: 0.6898 - val_accuracy: 0.5116
+Epoch 6/10
+103/103 [==============================] - 228s 2s/step - loss: 0.6953 - accuracy: 0.5171 - val_loss: 0.7018 - val_accuracy: 0.4878
+Epoch 7/10
+103/103 [==============================] - 228s 2s/step - loss: 0.6992 - accuracy: 0.5025 - val_loss: 0.6920 - val_accuracy: 0.5118
+Epoch 8/10
+103/103 [==============================] - 230s 2s/step - loss: 0.6960 - accuracy: 0.5096 - val_loss: 0.6922 - val_accuracy: 0.5120
+Epoch 9/10
+103/103 [==============================] - 230s 2s/step - loss: 0.6967 - accuracy: 0.5040 - val_loss: 0.6906 - val_accuracy: 0.5121
+Epoch 10/10
+103/103 [==============================] - 230s 2s/step - loss: 0.6955 - accuracy: 0.5126 - val_loss: 0.6868 - val_accuracy: 0.5117
+Trial 20 Complete [01h 16m 34s]
+val_accuracy: 0.6626193225383759
+
+Best val_accuracy So Far: 0.8823946416378021
+Total elapsed time: 2d 15h 21m 49s

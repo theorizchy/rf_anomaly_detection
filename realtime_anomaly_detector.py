@@ -12,21 +12,76 @@ warnings.filterwarnings("ignore")
 from helpers.mail import sendEmail
 
 # Limit for consecutive camera ON
-CAM_ON_LIMIT = 5
+CAM_ON_LIMIT = 50
+# Prediction threshold for camera ON
+CAM_THRESHOLD = 0.5
+# Numbers of sample to be taken before actual prediction
+SAMPLE_COUNT = 1
+# Majority Threshold
+MAJORITY_THRESHOLD = 0.5
 
 # Initialize counters for predictions
 cam_off_count = 0
 cam_on_count = 0
 consecutive_cam_on = 0
 
-# Load the optimized TensorFlow Lite model
-optimized_model_path = 'models/model_optimize.tflite'
-interpreter = tf.lite.Interpreter(model_path=optimized_model_path)
-interpreter.allocate_tensors()
+USE_TFLITE_MODEL = False
+USE_KERAS_MODEL = True
 
-# Get input and output tensors
-input_details = interpreter.get_input_details()
-output_details = interpreter.get_output_details()
+if USE_TFLITE_MODEL:
+    # Load the optimized TensorFlow Lite model
+    optimized_model_path = 'models/model_optimize.tflite'
+    interpreter = tf.lite.Interpreter(model_path=optimized_model_path)
+    interpreter.allocate_tensors()
+
+    # Get input and output tensors
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+
+    # Function to perform inference on input data
+    def perform_inference(input_data):
+        # Prepare input data
+        input_data = input_data.astype(np.float32)
+        # Standard scaling
+        scaler = StandardScaler()
+        input_data_scaled = scaler.fit_transform(input_data.reshape(-1, 1)).reshape(1, -1)
+        # Set input tensor
+        interpreter.set_tensor(input_details[0]['index'], input_data_scaled)
+        # Run inference
+        interpreter.invoke()
+        # Get the output tensor
+        output_data = interpreter.get_tensor(output_details[0]['index'])
+        # Convert output to binary predictions
+        predictions_binary = ((output_data > CAM_THRESHOLD).astype(int))[0]
+        return predictions_binary[0], 100
+
+elif USE_KERAS_MODEL:
+    from tensorflow.keras.models import load_model
+
+    # Load the Keras model
+    model_path = 'models/hybrid_cnn_rnn_t10.h5'
+    model = load_model(model_path)
+
+    def perform_inference(input_data):
+        # Reshape input data to match model input shape
+        input_data_reshaped = input_data.reshape(1, input_data.shape[0])
+        # Perform inference
+        predictions = model.predict(input_data_reshaped)
+        # Apply majority voting for each timestep
+        binary_predictions = (predictions >= CAM_THRESHOLD).astype(int)
+        majority_votes = np.mean(binary_predictions, axis=0)  # Compute mean along the batch axis
+        # Calculate confidence (percentage of 1s)
+        confidence = np.mean(majority_votes) * 100
+        # Predict ON if >50% confidence
+        prediction = 1 if confidence > CAM_THRESHOLD else 0
+        # Invert confidence for camera OFF
+        confidence = (100-confidence) if prediction == 0 else confidence
+
+        return prediction, confidence
+else:
+    def perform_inference(input_data):
+        print('Model not defined')
+        return -1, -1
 
 # Get the VISA resource manager
 rm = pyvisa.ResourceManager()
@@ -59,23 +114,6 @@ inst.write("TRAC:TYPE WRITE")  # Set clear and write mode
 inst.write("TRAC:UPD ON")  # Set update state to on
 inst.write("TRAC:DISP ON")  # Set un-hidden
 
-# Function to perform inference on input data
-def perform_inference(input_data):
-    # Prepare input data
-    input_data = input_data.astype(np.float32)
-    # Standard scaling
-    scaler = StandardScaler()
-    input_data_scaled = scaler.fit_transform(input_data.reshape(-1, 1)).reshape(1, -1)
-    # Set input tensor
-    interpreter.set_tensor(input_details[0]['index'], input_data_scaled)
-    # Run inference
-    interpreter.invoke()
-    # Get the output tensor
-    output_data = interpreter.get_tensor(output_details[0]['index'])
-    # Convert output to binary predictions
-    predictions_binary = (output_data > 0.5).astype(int)
-    return predictions_binary[0]
-
 # Get current timestamp with millisecond
 def get_current_timestamp():
     return datetime.now().astimezone(tz=None).strftime('%Y-%m-%d %H:%M:%S.%f')
@@ -91,26 +129,39 @@ with open(filepath, 'w', newline='') as csvfile:
     # Perform sweeps indefinitely every 5 seconds
     while True:
         try:
+            # Initialize an empty list to store capture points
+            capture_points_list = []
+
+            # Capture data for SAMPLE_COUNT times at each frequency
+            for _ in range(SAMPLE_COUNT):
+                # Trigger a sweep, and wait for it to complete
+                inst.query(":INIT; *OPC?")
+
+                # Sweep data is returned as comma-separated values
+                data = inst.query("TRACE:DATA?")
+
+                # Convert data to numpy array
+                capture_points = np.array(data.split(','), dtype=float)
+
+                # Append capture points to the list
+                capture_points_list.append(capture_points)
+
+            # Convert the list to a numpy array
+            capture_points_array = np.array(capture_points_list)
+
             # Get current timestamp with millisecond
             timestamp = get_current_timestamp()
 
-            # Trigger a sweep, and wait for it to complete
-            inst.query(":INIT; *OPC?")
-
-            # Sweep data is returned as comma-separated values
-            data = inst.query("TRACE:DATA?")
-
-            # Convert data to numpy array
-            capture_points = np.array(data.split(','), dtype=float)
-
+            # Take the minimum values at each frequency
+            min_capture_points = np.min(capture_points_array, axis=0)
             # Perform inference
-            prediction = perform_inference(capture_points)[0]
+            prediction, confidence = perform_inference(min_capture_points)
 
             # Write timestamp, capture points, and prediction to CSV
-            writer.writerow([timestamp, data, prediction])
+            writer.writerow([timestamp, ','.join(map(str, min_capture_points)), prediction])
             csvfile.flush()
 
-            print(f"Saved data and prediction at {timestamp}, camera: {'OFF' if prediction == 0 else 'ON'}")
+            print(f"Saved data and prediction at {timestamp}, camera: {'OFF' if prediction == 0 else 'ON'} (confidence: {confidence:.3f}%)")
 
             # Update prediction counters
             if prediction == 0:
@@ -125,9 +176,6 @@ with open(filepath, 'w', newline='') as csvfile:
                     sendEmail()  # Send email notification
                     print(" >> [ALERT] Email sent to notify user!")
                     consecutive_cam_on = 0
-
-            # Wait for 5 seconds before the next sweep
-            time.sleep(5)
 
         except KeyboardInterrupt:
             print("Keyboard interrupt detected. Exiting...")
