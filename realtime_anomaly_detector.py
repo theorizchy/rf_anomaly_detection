@@ -17,7 +17,7 @@ CAM_ON_LIMIT = 50
 # Prediction threshold for camera ON
 CAM_THRESHOLD = 0.5
 # Numbers of sample to be taken before actual prediction
-SAMPLE_COUNT = 10
+SAMPLE_COUNT = 100
 # Majority Threshold
 MAJORITY_THRESHOLD = 0.5
 
@@ -31,10 +31,10 @@ USE_KERAS_MODEL = False
 
 if USE_TFLITE_MODEL:
     # Load the optimized TensorFlow Lite model
-    # optimized_model_path = 'models/model_optimize.tflite'
-    optimized_model_path = 'models/model.tflite'
-    # optimized_model_path = 'models/dnn_model.tflite'
-    interpreter = tf.lite.Interpreter(model_path=optimized_model_path)
+    # model_path = 'models/model_optimize.tflite'
+    model_path = 'models/model.tflite'
+    # model_path = 'models/dnn_model.tflite'
+    interpreter = tf.lite.Interpreter(model_path=model_path)
     interpreter.allocate_tensors()
 
     # Get input and output tensors
@@ -72,11 +72,12 @@ elif USE_KERAS_MODEL:
     scaler = joblib.load('models/scaler.pkl')
 
     def perform_inference(input_data):
-        # input_data_ = scaler.transform(input_data)
         # Reshape input data to match model input shape
-        input_data_reshaped = input_data.reshape(1, input_data.shape[0])
+        input_data_reshaped = input_data.reshape(1, -1, 1, 1)
+        # Transform the data using the loaded scaler
+        input_data_transformed = scaler.transform(input_data_reshaped.reshape(1, -1)).reshape(1, -1, 1, 1)
         # Perform inference
-        predictions = model.predict(input_data_reshaped)
+        predictions = model.predict(input_data_transformed)
         # Apply majority voting for each timestep
         binary_predictions = (predictions >= CAM_THRESHOLD).astype(int)
         majority_votes = np.mean(binary_predictions, axis=0)  # Compute mean along the batch axis
