@@ -5,5 +5,4 @@ model_deployment/build/*
 train_data/*
 models/*
 __pycache__
-keras_tuning/*
-keras_tuning_agg_t10/*
+keras_tuning*

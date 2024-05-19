@@ -17,20 +17,22 @@ inst.write_termination = '\n'
 # Set the measurement mode to sweep
 inst.write("INSTRUMENT:SELECT SA")
 
-# Configure a 20MHz span sweep at 1GHz
+# Configure a 20MHz span sweep at 456MHz
 # Set the RBW/VBW to auto
 inst.write("SENS:BAND:RES:AUTO ON; :BAND:VID:AUTO ON; :BAND:SHAPE FLATTOP")
 # Center/span
-inst.write("SENS:FREQ:SPAN 6GHZ; CENT 3GHZ")
+inst.write("SENS:FREQ:SPAN 1MHZ; CENT 456MHZ")
 # Reference level/Div
-inst.write("SENS:POW:RF:RLEV -20DBM; PDIV 10")
-# Peak detector
-inst.write("SENS:SWE:DET:FUNC MINMAX; UNIT POWER")
+inst.write("SENS:POW:RF:RLEV -40DBM; PDIV 10")
+# Set sweep time to 20ms
+inst.write("SENS:SWE:TIME 10MS")
+# Clear and write mode
+inst.write("SENS:SWE:DET:FUNC CLEARWRITE; UNIT POWER")
 
 # Configure the trace. Ensures trace 1 is active and enabled for clear-and-write.
 # These commands are not required to be sent every time; this is for illustrative purposes only.
 inst.write("TRAC:SEL 1")  # Select trace 1
-inst.write("TRAC:TYPE WRITE")  # Set clear and write mode
+inst.write("TRAC:TYPE CLEARWRITE")  # Set clear and write mode
 inst.write("TRAC:UPD ON")  # Set update state to on
 inst.write("TRAC:DISP ON")  # Set un-hidden
 
@@ -43,8 +45,8 @@ filename = f"captured_SWEEP_REC_{datetime.now().astimezone(tz=None).strftime('%Y
 filepath = os.path.join('output_file', filename)
 with open(filepath, 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
-    # Perform 100 sweeps
-    for i in range(100):
+    # Perform 10000 sweeps
+    for i in range(10000):
         # Get current timestamp with millisecond
         timestamp = get_current_timestamp()
 

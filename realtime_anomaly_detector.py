@@ -10,13 +10,14 @@ import warnings
 # Suppress all warnings
 warnings.filterwarnings("ignore")
 from helpers.mail import sendEmail
+import joblib
 
 # Limit for consecutive camera ON
 CAM_ON_LIMIT = 50
 # Prediction threshold for camera ON
 CAM_THRESHOLD = 0.5
 # Numbers of sample to be taken before actual prediction
-SAMPLE_COUNT = 1
+SAMPLE_COUNT = 10
 # Majority Threshold
 MAJORITY_THRESHOLD = 0.5
 
@@ -25,12 +26,14 @@ cam_off_count = 0
 cam_on_count = 0
 consecutive_cam_on = 0
 
-USE_TFLITE_MODEL = False
-USE_KERAS_MODEL = True
+USE_TFLITE_MODEL = True
+USE_KERAS_MODEL = False
 
 if USE_TFLITE_MODEL:
     # Load the optimized TensorFlow Lite model
-    optimized_model_path = 'models/model_optimize.tflite'
+    # optimized_model_path = 'models/model_optimize.tflite'
+    optimized_model_path = 'models/model.tflite'
+    # optimized_model_path = 'models/dnn_model.tflite'
     interpreter = tf.lite.Interpreter(model_path=optimized_model_path)
     interpreter.allocate_tensors()
 
@@ -38,12 +41,14 @@ if USE_TFLITE_MODEL:
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
 
+    # Load scaler from file
+    scaler = joblib.load('models/scaler.pkl')
+
     # Function to perform inference on input data
     def perform_inference(input_data):
         # Prepare input data
         input_data = input_data.astype(np.float32)
-        # Standard scaling
-        scaler = StandardScaler()
+        # Input data scaled
         input_data_scaled = scaler.fit_transform(input_data.reshape(-1, 1)).reshape(1, -1)
         # Set input tensor
         interpreter.set_tensor(input_details[0]['index'], input_data_scaled)
@@ -53,16 +58,21 @@ if USE_TFLITE_MODEL:
         output_data = interpreter.get_tensor(output_details[0]['index'])
         # Convert output to binary predictions
         predictions_binary = ((output_data > CAM_THRESHOLD).astype(int))[0]
-        return predictions_binary[0], 100
+        confidence = (float(output_data) if predictions_binary[0] == 1 else (1-float(output_data)))*100
+        return predictions_binary[0], confidence
 
 elif USE_KERAS_MODEL:
     from tensorflow.keras.models import load_model
 
     # Load the Keras model
-    model_path = 'models/hybrid_cnn_rnn_t10.h5'
+    model_path = 'models/hybrid_cnn_rnn.h5'
     model = load_model(model_path)
 
+    # Load scaler from file
+    scaler = joblib.load('models/scaler.pkl')
+
     def perform_inference(input_data):
+        # input_data_ = scaler.transform(input_data)
         # Reshape input data to match model input shape
         input_data_reshaped = input_data.reshape(1, input_data.shape[0])
         # Perform inference
@@ -97,20 +107,20 @@ inst.write_termination = '\n'
 # Set the measurement mode to sweep
 inst.write("INSTRUMENT:SELECT SA")
 
-# Configure a 20MHz span sweep at 1GHz
+# Configure a 20MHz span sweep at 456MHz
 # Set the RBW/VBW to auto
 inst.write("SENS:BAND:RES:AUTO ON; :BAND:VID:AUTO ON; :BAND:SHAPE FLATTOP")
 # Center/span
-inst.write("SENS:FREQ:SPAN 6GHZ; CENT 3GHZ")
+inst.write("SENS:FREQ:SPAN 1MHZ; CENT 456MHZ")
 # Reference level/Div
-inst.write("SENS:POW:RF:RLEV -20DBM; PDIV 10")
+inst.write("SENS:POW:RF:RLEV -40DBM; PDIV 10")
 # Peak detector
-inst.write("SENS:SWE:DET:FUNC MINMAX; UNIT POWER")
+inst.write("SENS:SWE:DET:FUNC CLEARWRITE; UNIT POWER")
 
 # Configure the trace. Ensures trace 1 is active and enabled for clear-and-write.
 # These commands are not required to be sent every time; this is for illustrative purposes only.
 inst.write("TRAC:SEL 1")  # Select trace 1
-inst.write("TRAC:TYPE WRITE")  # Set clear and write mode
+inst.write("TRAC:TYPE CLEARWRITE")  # Set clear and write mode
 inst.write("TRAC:UPD ON")  # Set update state to on
 inst.write("TRAC:DISP ON")  # Set un-hidden
 
@@ -153,7 +163,8 @@ with open(filepath, 'w', newline='') as csvfile:
             timestamp = get_current_timestamp()
 
             # Take the minimum values at each frequency
-            min_capture_points = np.min(capture_points_array, axis=0)
+            min_capture_points = np.max(capture_points_array, axis=0)
+
             # Perform inference
             prediction, confidence = perform_inference(min_capture_points)
 
