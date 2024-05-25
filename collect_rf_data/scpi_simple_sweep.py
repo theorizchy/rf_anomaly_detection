@@ -17,7 +17,7 @@ inst.write_termination = '\n'
 # Set the measurement mode to sweep
 inst.write("INSTRUMENT:SELECT SA")
 
-# Configure a 20MHz span sweep at 456MHz
+# Configure a 1MHz span sweep at 456MHz
 # Set the RBW/VBW to auto
 inst.write("SENS:BAND:RES:AUTO ON; :BAND:VID:AUTO ON; :BAND:SHAPE FLATTOP")
 # Center/span
@@ -41,7 +41,7 @@ def get_current_timestamp():
     return datetime.now().astimezone(tz=None).strftime('%Y-%m-%d %H:%M:%S.%f')
 
 # Create a CSV file with timestamp in filename
-filename = f"captured_SWEEP_REC_{datetime.now().astimezone(tz=None).strftime('%Y-%m-%d %Hh%Mm%Ss')}.csv"
+filename = f"clearwrite_captured_SWEEP_REC_{datetime.now().astimezone(tz=None).strftime('%Y-%m-%d %Hh%Mm%Ss')}.csv"
 filepath = os.path.join('output_file', filename)
 with open(filepath, 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
