@@ -16,13 +16,11 @@ import sys
 import pandas as pd
 
 # Limit for consecutive camera ON
-CAM_ON_LIMIT = 50
+CAM_ON_LIMIT = 500
 # Prediction threshold for camera ON
-CAM_THRESHOLD = 0.5
+CAM_THRESHOLD = 0.7
 # Numbers of sample to be taken before actual prediction
 SAMPLE_COUNT = 100
-# Majority Threshold
-MAJORITY_THRESHOLD = 0.5
 
 
 class Helper:
@@ -32,8 +30,9 @@ class Helper:
         return datetime.now().astimezone(tz=None).strftime('%Y-%m-%d %H:%M:%S.%f')
 
 
-USE_TFLITE_MODEL = True
-USE_KERAS_MODEL = False
+USE_TFLITE_MODEL = False
+USE_KERAS_MODEL = True
+ESP32_MODEL = False
 
 if USE_TFLITE_MODEL:
     # Load the optimized TensorFlow Lite model
@@ -75,24 +74,42 @@ elif USE_KERAS_MODEL:
     model = load_model(model_path)
 
     # Load scaler from file
-    scaler = joblib.load('models/scaler.pkl')
+    scaler = joblib.load('models/scaler_cnn.pkl')
 
     def perform_inference(input_data):
         # Reshape input data to match model input shape
-        input_data_reshaped = input_data.reshape(1, -1, 1, 1)
+        input_data_reshaped = input_data.reshape(1, -1, 1)
         # Transform the data using the loaded scaler
-        input_data_transformed = scaler.transform(input_data_reshaped.reshape(1, -1)).reshape(1, -1, 1, 1)
+        input_data_transformed = scaler.transform(input_data_reshaped.reshape(1, -1)).reshape(1, -1, 1)
         # Perform inference
         predictions = model.predict(input_data_transformed)
-        # Apply majority voting for each timestep
-        binary_predictions = (predictions >= CAM_THRESHOLD).astype(int)
-        majority_votes = np.mean(binary_predictions, axis=0)  # Compute mean along the batch axis
-        # Calculate confidence (percentage of 1s)
-        confidence = np.mean(majority_votes) * 100
-        # Predict ON if >50% confidence
-        prediction = 1 if confidence > CAM_THRESHOLD else 0
-        # Invert confidence for camera OFF
-        confidence = (100-confidence) if prediction == 0 else confidence
+        # Convert predictions to binary and calculate confidence
+        predictions_binary = (predictions >= CAM_THRESHOLD).astype(int)
+        confidence = (predictions[0][0] * 100) if predictions_binary[0][0] == 1 else ((1 - predictions[0][0]) * 100)
+        prediction = predictions_binary[0][0]
+
+        return prediction, confidence
+elif ESP32_MODEL:
+    from tensorflow.keras.models import load_model
+
+    # Load the Keras model
+    model_path = 'models/hybrid_cnn_rnn_esp.h5'
+    model = load_model(model_path)
+
+    # Load scaler from file
+    scaler = joblib.load('models/scaler_esp.pkl')
+
+    def perform_inference(input_data):
+        # Reshape input data to match model input shape
+        input_data_reshaped = input_data.reshape(1, -1, 1)
+        # Transform the data using the loaded scaler
+        input_data_transformed = scaler.transform(input_data_reshaped.reshape(1, -1)).reshape(1, -1, 1)
+        # Perform inference
+        predictions = model.predict(input_data_transformed)
+        # Convert predictions to binary and calculate confidence
+        predictions_binary = (predictions >= CAM_THRESHOLD).astype(int)
+        confidence = (predictions[0][0] * 100) if predictions_binary[0][0] == 1 else ((1 - predictions[0][0]) * 100)
+        prediction = predictions_binary[0][0]
 
         return prediction, confidence
 else:
@@ -129,11 +146,14 @@ class Analyzer():
             self.inst.write("self.INSTRUMENT:SELECT SA")
             # Configure a 20MHz span sweep at 456MHz
             # Set the RBW/VBW to auto
-            self.inst.write("SENS:BAND:RES:AUTO ON; :BAND:VID:AUTO ON; :BAND:SHAPE FLATTOP")
+            # self.inst.write("SENS:BAND:RES:AUTO ON; :BAND:VID:AUTO ON; :BAND:SHAPE FLATTOP")
+            self.inst.write("SENS:BAND:RES 500HZ; :BAND:VID 2KHZ; :BAND:SHAPE FLATTOP")
             # Center/span
             self.inst.write("SENS:FREQ:SPAN 1MHZ; CENT 456MHZ")
             # Reference level/Div
             self.inst.write("SENS:POW:RF:RLEV -40DBM; PDIV 10")
+            # Set sweep time to 50ms
+            self.inst.write("SENS:SWE:TIME 50MS")
             # Peak detector
             self.inst.write("SENS:SWE:DET:FUNC CLEARWRITE; UNIT POWER")
             # Configure the trace. Ensures trace 1 is active and enabled for clear-and-write.
@@ -172,6 +192,13 @@ def main(args):
     simulated = args.simulated
     model = args.model
     log = args.log
+
+    if model == 'tflite':
+        USE_TFLITE_MODEL = True
+        USE_KERAS_MODEL = False
+    else:
+        USE_TFLITE_MODEL = False
+        USE_KERAS_MODEL = True
 
     # Initialize counters for predictions
     cam_off_count = 0
@@ -218,14 +245,14 @@ def main(args):
                 timestamp = Helper.get_current_timestamp()
 
                 # Take the minimum values at each frequency
-                min_capture_points = np.max(capture_points_array, axis=0)
+                capture_points = np.max(capture_points_array, axis=0)
 
                 # Perform inference
-                prediction, confidence = perform_inference(min_capture_points)
+                prediction, confidence = perform_inference(capture_points)
 
                 if log:
                     # Write timestamp, capture points, and prediction to CSV
-                    writer.writerow([timestamp, ','.join(map(str, min_capture_points)), prediction])
+                    writer.writerow([timestamp, ','.join(map(str, capture_points)), prediction])
                     csvfile.flush()
 
                 print(f"Saved data and prediction at {timestamp}, camera: {'OFF' if prediction == 0 else 'ON'} (confidence: {confidence:.3f}%)")
