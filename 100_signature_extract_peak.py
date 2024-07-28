@@ -4,6 +4,7 @@ import numpy as np
 from scipy.signal import find_peaks
 from scipy.stats import skew, kurtosis
 import matplotlib.pyplot as plt
+from keras.models import load_model
 
 # Function to find the highest peak in the given range
 def find_peak(measurements, indices, start_freq, interval):

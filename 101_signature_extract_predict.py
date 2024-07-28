@@ -32,6 +32,11 @@ NUM_OF_PEAKS = 5
 RETRAIN_ENCODER = False
 folder_name = 'extract_peaks'
 
+if RETRAIN_ENCODER:
+    scaler = StandardScaler()
+else:
+    scaler = joblib.load('signature/model/sig_scaler.pkl')
+
 def extract_feature(file, n=NUM_OF_PEAKS):
     data = pd.read_csv(file)
     if n == 5:
@@ -119,12 +124,11 @@ def extract_feature(file, n=NUM_OF_PEAKS):
     # Return the feature data for further processing
     return new_features
 
-scaler = StandardScaler()
 def preprocess_data(data, train=True):
     global scaler
     if train:
         scaled_data = scaler.fit_transform(data.drop(columns=['timestamp']))
-    else: 
+    else:
         scaled_data = scaler.transform(data.drop(columns=['timestamp']))
     return scaled_data
 
