@@ -204,8 +204,8 @@ class Helper:
         new_sample_error = np.mean(np.square(new_sample - new_sample_reconstructed))
         return new_sample_error < threshold
 
-USE_TFLITE_MODEL = True
-USE_KERAS_MODEL = False
+USE_TFLITE_MODEL = False
+USE_KERAS_MODEL = True
 ESP32_MODEL = False
 
 if USE_TFLITE_MODEL:
@@ -321,7 +321,7 @@ class Analyzer():
             # Configure a 20MHz span sweep at 456MHz
             # Set the RBW/VBW to auto
             # self.inst.write("SENS:BAND:RES:AUTO ON; :BAND:VID:AUTO ON; :BAND:SHAPE FLATTOP")
-            self.inst.write("SENS:BAND:RES 500HZ; :BAND:VID 2KHZ; :BAND:SHAPE FLATTOP")
+            self.inst.write("SENS:BAND:RES 500HZ; :BAND:VID AUTO ON; :BAND:SHAPE FLATTOP")
             # Center/span
             self.inst.write("SENS:FREQ:SPAN 1MHZ; CENT 456MHZ")
             # Reference level/Div
