@@ -17,10 +17,12 @@ import pandas as pd
 from scipy.signal import find_peaks
 from scipy.stats import skew, kurtosis
 import matplotlib.pyplot as plt
+from tensorflow.keras.models import load_model
 from sklearn.metrics.pairwise import cosine_similarity
 import random
 from sklearn.utils import check_random_state
 from keras.models import load_model
+import seaborn as sns
 
 # Set a global seed
 SEED = 777
@@ -204,45 +206,10 @@ class Helper:
         new_sample_error = np.mean(np.square(new_sample - new_sample_reconstructed))
         return new_sample_error < threshold
 
-USE_TFLITE_MODEL = False
 USE_KERAS_MODEL = True
 ESP32_MODEL = False
 
-if USE_TFLITE_MODEL:
-    # Load the optimized TensorFlow Lite model
-    # model_path = 'models/model_optimize.tflite'
-    model_path = 'models/model.tflite'
-    # model_path = 'models/dnn_model.tflite'
-    interpreter = tf.lite.Interpreter(model_path=model_path)
-    interpreter.allocate_tensors()
-
-    # Get input and output tensors
-    input_details = interpreter.get_input_details()
-    output_details = interpreter.get_output_details()
-
-    # Load scaler from file
-    scaler = joblib.load('models/scaler.pkl')
-
-    # Function to perform inference on input data
-    def perform_inference(input_data):
-        # Prepare input data
-        input_data = input_data.astype(np.float32)
-        # Input data scaled
-        input_data_scaled = scaler.fit_transform(input_data.reshape(-1, 1)).reshape(1, -1)
-        # Set input tensor
-        interpreter.set_tensor(input_details[0]['index'], input_data_scaled)
-        # Run inference
-        interpreter.invoke()
-        # Get the output tensor
-        output_data = interpreter.get_tensor(output_details[0]['index'])
-        # Convert output to binary predictions
-        predictions_binary = ((output_data > CAM_THRESHOLD).astype(int))[0]
-        confidence = (float(output_data) if predictions_binary[0] == 1 else (1-float(output_data)))*100
-        return predictions_binary[0], confidence
-
-elif USE_KERAS_MODEL:
-    from tensorflow.keras.models import load_model
-
+if USE_KERAS_MODEL:
     # Load the Keras model
     model_path = 'models/hybrid_cnn_rnn.h5'
     model = load_model(model_path)
@@ -264,8 +231,6 @@ elif USE_KERAS_MODEL:
 
         return prediction, confidence
 elif ESP32_MODEL:
-    from tensorflow.keras.models import load_model
-
     # Load the Keras model
     model_path = 'models/hybrid_cnn_rnn_esp.h5'
     model = load_model(model_path)
@@ -367,16 +332,18 @@ def main(args):
     model = args.model
     log = args.log
 
-    if model == 'tflite':
-        USE_TFLITE_MODEL = True
-        USE_KERAS_MODEL = False
-    else:
-        USE_TFLITE_MODEL = False
+    if model == 'keras':
+        ESP32_MODEL = False
         USE_KERAS_MODEL = True
+    else:
+        ESP32_MODEL = True
+        USE_KERAS_MODEL = False
 
     # Initialize counters for predictions
     consecutive_cam_on = 0
     on_off_predictions = {'cam_off': 0, 'cam_on': 0}
+    prediction_time = []
+    sig_prediction_time = []
 
     # Initialize analyzer
     analyzer = Analyzer()
@@ -408,6 +375,42 @@ def main(args):
                         print(f"Number of predictions=1: {on_off_predictions['cam_on']}")
                         for (key, val) in sorted(signature_predictions.items()):
                             print(f'   - [{key}]: {val}')
+                        print(f'Time taken for predicting camera operational state:')
+                        print(f'   - min: {np.min(prediction_time):.3f} ms')
+                        print(f'   - avg: {np.mean(prediction_time):.3f} ms')
+                        print(f'   - max: {np.max(prediction_time):.3f} ms')
+                        print(f'Time taken for distinguishing camera signature:')
+                        print(f'   - min: {np.min(sig_prediction_time):.3f} ms')
+                        print(f'   - avg: {np.mean(sig_prediction_time):.3f} ms')
+                        print(f'   - max: {np.max(sig_prediction_time):.3f} ms')
+                        
+                        # data = np.array(prediction_time)
+                        # # Create a seaborn style plot
+                        # sns.set(style="whitegrid")
+                        # # Create a figure and axis
+                        # plt.figure(figsize=(10, 6))
+                        # # Plot the distribution using seaborn's histogram
+                        # sns.histplot(data, kde=True, bins=30)
+                        # # Set plot labels and title
+                        # plt.xlabel('Time (ms)')
+                        # plt.ylabel('Frequency')
+                        # plt.title('Distribution of Camera Operational State Prediction Time')
+                        # # Show the plot
+                        # plt.show()
+                        
+                        # data = np.array(sig_prediction_time)
+                        # # Create a seaborn style plot
+                        # sns.set(style="whitegrid")
+                        # # Create a figure and axis
+                        # plt.figure(figsize=(10, 6))
+                        # # Plot the distribution using seaborn's histogram
+                        # sns.histplot(data, kde=True, color='green', bins=30)
+                        # # Set plot labels and title
+                        # plt.xlabel('Time (ms)')
+                        # plt.ylabel('Frequency')
+                        # plt.title('Distribution of Camera Signature Prediction Time')
+                        # # Show the plot
+                        # plt.show()
                         return
 
                     # Append capture points to the list
@@ -424,14 +427,21 @@ def main(args):
                 capture_points_avg = np.average(capture_points_array, axis=0)
 
                 # Perform inference
+                time_start = time.time()
                 prediction, confidence = perform_inference(capture_points)
+                elapsed_predict_time = time.time() - time_start
+                prediction_time.append(1000*elapsed_predict_time)
 
                 if prediction == 0:
                     on_off_predictions['cam_off'] = on_off_predictions.get('cam_off', 0) + 1
                 else:
                     on_off_predictions['cam_on'] = on_off_predictions.get('cam_on', 0) + 1
- 
+
+                sig_time_start = time.time()
                 status, ret_val = Helper.find_peak_values(capture_points_avg)
+                sig_elapsed_predict_time = time.time() - sig_time_start
+                sig_prediction_time.append(1000*sig_elapsed_predict_time)
+                
                 if status:
                     most_similar_cam, similarity_score, is_known = ret_val[0], ret_val[1], ret_val[2]                                 
                     # Define a threshold for similarity score to classify known/unknown
@@ -467,6 +477,14 @@ def main(args):
                 print(f"Number of predictions=1: {on_off_predictions['cam_on']}")
                 for (key, val) in sorted(signature_predictions.items()):
                     print(f'   - [{key}]: {val}')
+                print(f'Time taken for predicting camera operational state:')
+                print(f'   - min: {np.min(prediction_time):.3f} ms')
+                print(f'   - avg: {np.mean(prediction_time):.3f} ms')
+                print(f'   - max: {np.max(prediction_time):.3f} ms')
+                print(f'Time taken for distinguishing camera signature:')
+                print(f'   - min: {np.min(sig_prediction_time):.3f} ms')
+                print(f'   - avg: {np.mean(sig_prediction_time):.3f} ms')
+                print(f'   - max: {np.max(sig_prediction_time):.3f} ms')
                 break
 
         if not simulated:
@@ -477,7 +495,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--simulated', type=str, help='Run in simulated mode with the provided CSV file')
     # parser.add_argument('--simulated', action='store_true', default=False, help='Run in simulated mode. (Default: Real Capture)')
-    parser.add_argument('--model', choices=['tflite', 'keras'], default='tflite', help='Specify the model type (default: tflite)')
+    parser.add_argument('--model', choices=['esp32', 'keras'], default='keras', help='Specify the model type (default: keras)')
     parser.add_argument('--log', action='store_true', default=True, help='Option to log output (default: Enabled)')
     args = parser.parse_args()
     main(args)

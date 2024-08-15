@@ -151,7 +151,7 @@ def split_encoded_data(data, lengths):
 
     return known_signatures
 
-def create_autoencoder(input_dim, encoding_dim=128):
+def create_autoencoder(input_dim, encoding_dim):
     input_layer = Input(shape=(input_dim,))
     x = Dense(128, activation="relu")(input_layer)
     x = BatchNormalization()(x)
