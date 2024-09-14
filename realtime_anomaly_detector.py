@@ -369,6 +369,9 @@ def main(args):
                 for _ in range(SAMPLE_COUNT):
                     # Capture data from analyzer
                     data = analyzer.capture_data(simulated)
+                    # simulate capturing data take 50ms per sample
+                    time.sleep(0.05) 
+                    # process data
                     if data is None:  # Terminate the loop if no more data in simulated mode
                         print("End of simulated data. Exiting...")
                         print(f"Number of predictions=0: {on_off_predictions['cam_off']}")
