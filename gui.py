@@ -1,9 +1,8 @@
 import sys
-import re
 import subprocess
 from PyQt5.QtWidgets import QApplication, QLabel, QVBoxLayout, QWidget, QTextEdit, QPushButton, QHBoxLayout, QGridLayout, QSpacerItem, QSizePolicy
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal, Qt
-from PyQt5.QtGui import QColor, QFont, QPainter, QBrush
+from PyQt5.QtGui import QColor, QFont, QPainter, QBrush, QIcon
 
 # Custom widget to show a circle (red/green status indicator)
 class CircleIndicator(QWidget):
@@ -257,6 +256,9 @@ class CameraDataGUI(QWidget):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     gui = CameraDataGUI()
-    gui.setGeometry(200, 200, 1000, 1000)  # Set the window size
+    gui.setGeometry(200, 200, 1000, 1000)  # Set window size
+    gui.setWindowTitle("Camera Monitoring Panel")  # Set window title
+    gui.setWindowIcon(QIcon('cctv.png'))
+    
     gui.show()
     sys.exit(app.exec_())
